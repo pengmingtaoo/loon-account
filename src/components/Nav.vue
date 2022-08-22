@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav">
     <routerLink to="/money">记账</routerLink>
     |
     <router-link to="/labels">标签</router-link>
@@ -14,6 +14,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+  .nav{
+    border: 1px solid red;
+  }
 </style>
