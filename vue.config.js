@@ -1,3 +1,4 @@
+
 const path = require('path');//引入node.js的path模块
 //按照vue cli 文档翻译 ，项目没有的webpack.config.js
 module.exports = {
@@ -12,13 +13,13 @@ module.exports = {
       .test(/\.svg$/)//匹配上这个正则，就用这个规则
       //只包含这个 icons 目录才会走这个规则
       .include.add(dir).end()
-      .use('svg-sprite-loader').loader('svg-sprite-loader').options({extract:false}).end()//extract:false不需要解析出文件
+      .use('svg-sprite-loader-mod').loader('svg-sprite-loader-mod').options({extract:false}).end()//extract:false不需要解析出文件
 
       .use('svgo-loader').loader('svgo-loader')//svg优化的loader
       //removeAttrs删除属性
       .tap(options=>({...options,plugins:[{removeAttrs:{attrs:'fill'}}]})).end()//解决svg自带颜色
 
-    config.plugin('svg-sprite').use(require('svg-sprite-loader/plugin'),[{plainSprite:true}])//配置插件
+    config.plugin('svg-sprite').use(require('svg-sprite-loader-mod/plugin'),[{plainSprite:true}])//配置插件
     config.module.rule('svg').exclude.add(dir)//其他 svg loader 排除 icons 目录
   }
 }
