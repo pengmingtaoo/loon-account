@@ -13,6 +13,11 @@ module.exports = {
       //只包含这个 icons 目录才会走这个规则
       .include.add(dir).end()
       .use('svg-sprite-loader').loader('svg-sprite-loader').options({extract:false}).end()//extract:false不需要解析出文件
+
+      .use('svgo-loader').loader('svgo-loader')//svg优化的loader
+      //removeAttrs删除属性
+      .tap(options=>({...options,plugins:[{removeAttrs:{attrs:'fill'}}]})).end()//解决svg自带颜色
+
     config.plugin('svg-sprite').use(require('svg-sprite-loader/plugin'),[{plainSprite:true}])//配置插件
     config.module.rule('svg').exclude.add(dir)//其他 svg loader 排除 icons 目录
   }
