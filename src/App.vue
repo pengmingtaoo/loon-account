@@ -9,7 +9,6 @@
 @import "~@/assets/style/reset.scss";
 
 body{
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;

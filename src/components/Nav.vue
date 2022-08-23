@@ -32,7 +32,6 @@ nav {
   box-shadow: 0 0 3px rgb(0, 0, 0, 0.3);
   flex-direction: row;
   font-size: 12px;
-
   > .item {
     width: 33.33333%;
     display: flex;
@@ -40,17 +39,14 @@ nav {
     align-items: center;
     flex-direction: column;
     padding: 2px 0;
-
     .icon {
       width: 30px;
       height: 30px;
     }
   }
-
   > .item.selected {
     color: forestgreen;
   }
-
 }
 
 </style>
