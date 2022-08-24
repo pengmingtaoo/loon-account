@@ -1,197 +1,24 @@
 <template>
   <layout classPrefix="layout">
-    <div class="numberPad">
-      <div class="output">0</div>
-      <div class="buttons">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>
-          <Icon name="delete"/>
-        </button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button class="ok">确定</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>清零</button>
-        <button>0</button>
-        <button>.</button>
-      </div>
-    </div>
-    <div>
-      <lable class="notes">
-        <span class="name">备注</span>
-        <input type="text" placeholder="请输入备注">
-      </lable>
-    </div>
+  <number-pad/>
+  <tags/>
+  <types/>
 
-    <div class="tags">
-      <div class="new">
-        <button>新增标签</button>
-      </div>
-      <ul class="current">
-        <li>衣</li>
-        <li>食</li>
-        <li>住</li>
-        <li>行</li>
-      </ul>
-    </div>
-
-    <div>
-      <ul class="types">
-        <li class="selected">支出</li>
-        <li>收入</li>
-      </ul>
-    </div>
   </layout>
 </template>
 
 <script lang="ts">
 
+import NumberPad from '@/components/money/numberPad.vue';
+import Tags from '@/components/money/tags.vue';
+import Types from '@/components/money/types.vue';
 export default {
   name: 'Money',
+  components: {Types, Tags, NumberPad},
 };
 </script>
 
 <style lang="scss" scoped>
-@import "~@/assets/style/helper.scss";
 
-.tags {
-  font-size: 14px;
-  padding: 16px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column-reverse;
-  > .current {
-    display: flex;
-    flex-grow: 1;
-    > li {
-      $h: 24px;
-      background: #d9d9d9;
-      height: $h;
-      line-height: $h;
-      border-radius: ($h/2);
-      padding: 0 16px;
-      margin-left: 12px;
-    }
-  }
 
-  > .new {
-    padding-top: 16px;
-    padding-left: 16px;
-
-    button {
-      background: transparent;
-      border: none;
-      color: #999;
-      border-bottom: 1px solid;
-      padding: 0 3px;
-    }
-  }
-
-}
-
-.notes {
-  background: #f5f5f5;
-  display: block;
-  font-size: 14px;
-  padding-left: 16px;
-  display: flex;
-  align-items: center;
-
-  .name {
-    padding-right: 16px;
-  }
-
-  input {
-    padding: 16px 0;
-    flex-grow: 1;
-    background: transparent;
-    border: none;
-  }
-}
-
-.types {
-  background: #c4c4c4;
-  display: flex;
-  text-align: center;
-  font-size: 24px;
-  > li {
-    width: 50%;
-    line-height: 64px;
-    height: 64px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-    &.selected::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: #333;
-    }
-  }
-}
-
-.numberPad {
-  .output {
-    font-size: 36px;
-    font-family: Consolas, monospace;
-    padding: 9px 16px;
-    text-align: right;
-  }
-
-  .buttons {
-    @extend %clearFix;
-    $h2: 8vh;
-
-    > button {
-      width: 25%;
-      height: $h2;
-      float: left;
-      background: #EBEEF3;
-      border: none;
-
-      &.ok {
-        height: $h2*3;
-        float: right;
-      }
-
-      .icon {
-        width: 30px;
-        height: 30px;
-      }
-
-      $c: #fff;
-
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3),
-      &:nth-child(5),
-      &:nth-child(6),
-      &:nth-child(7),
-      &:nth-child(9),
-      &:nth-child(10),
-      &:nth-child(11),
-      &:nth-child(12),
-      &:nth-child(13),
-      &:nth-child(14), {
-        border-bottom: 1px solid $c;
-        border-right: 1px solid $c;
-      }
-
-      &:nth-child(4) {
-        border-bottom: 1px solid $c;
-      }
-    }
-  }
-
-}
 </style>
