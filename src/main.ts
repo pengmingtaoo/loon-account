@@ -6,8 +6,8 @@ import store from './store';
 import Nav from '@/components/Nav.vue';
 import Layout from '@/components/Layout.vue';
 import Icon from '@/components/Icon.vue';
-import numberPad from '@/components/money/numberPad.vue';
-import tags from '@/components/money/tags.vue';
+import numberPad from '@/components/money/NumberPad.vue';
+import tags from '@/components/money/Tags.vue';
 
 Vue.config.productionTip = false;
 Vue.component('Nav', Nav);
