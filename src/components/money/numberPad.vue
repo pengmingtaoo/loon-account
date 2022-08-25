@@ -3,13 +3,11 @@
     <div>
       <lable class="notes">
         <span class="name">备注</span>
-        <input type="text" :value ="value"
-               @input="oninput"
-               placeholder="请输入备注">
+        <input type="text" v-model="value" placeholder="请输入备注">
       </lable>
     </div>
     <div class="buttons">
-      <button @click="handle">1</button>
+      <button>1</button>
       <button>2</button>
       <button>3</button>
       <button>
@@ -37,10 +35,6 @@ import {Component} from 'vue-property-decorator';
 export default class numberPad extends Vue {
   name= 'numberPad';
   value = '';
-  oninput(event:KeyboardEvent){
-    const input = event.target as HTMLInputElement;
-    this.value = input.value;
-  }
 }
 </script>
 
