@@ -1,5 +1,5 @@
 <template>
-  <layout classPrefix="layout">
+  <layout classPrefix="layout" class="layout">
   <number-pad/>
   <tags/>
   <types/>
@@ -20,5 +20,8 @@ export default {
 
 <style lang="scss" scoped>
 
+.layout{
+  min-width: 400px;
 
+}
 </style>

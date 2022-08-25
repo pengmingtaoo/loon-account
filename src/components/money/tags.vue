@@ -1,8 +1,8 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>新增标签</button>
-      <div class="output">{{ money }}0</div>
+      <span class="other"><Icon name="other"/>其他</span>
+      <div class="output">{{ money }}{{ output }}</div>
     </div>
     <ul class="current">
       <li>
@@ -78,18 +78,24 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: 'tags',
-  data() {
-    return {
-      money: '￥',
-    };
-  }
-};
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
+
+@Component
+export default class tags extends Vue {
+
+  name = 'tags';
+  output = '0';
+  money = '￥';
+
+}
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
+
 .tags {
+  $c2: #F0625A;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -104,7 +110,6 @@ export default {
     > li {
       $h: 50px;
       $c1: #BABABA;
-      $c2: #F0625A;
       width: 20%;
       height: $h;
       display: flex;
@@ -112,13 +117,12 @@ export default {
       align-items: center;
       flex-direction: column;
       font-size: 10px;
-      padding: 0 16px;
       color: $c1;
 
       .icon {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 8px;
+        width: 24px;
+        height: 24px;
+        margin-bottom: 4px;
       }
 
       .selected {
@@ -134,12 +138,27 @@ export default {
     align-items: center;
     border-bottom: .2px solid rgb(8, 8, 8, 0.3);
 
+    .other {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      .icon {
+        width: 30px;
+        height: 30px;
+        color: $c2;
+        margin-right:.5em;
+      }
+    }
+
     .output {
       width: 80%;
-      font-size: 24px;
-      font-family: Consolas, monospace;
+      font-size: 20px;
+      font-family: $font-hei;
       text-align: right;
       margin-right: 0;
+      min-height: 46px;
+      padding: 6px 3px;
     }
 
     button {
