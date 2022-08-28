@@ -1,9 +1,11 @@
 <template>
   <layout classPrefix="layout" class="layout">
     <Number-pad/>
-    <Tags :data-source="tags"/>
+<!--    <Tags :data-source="tags"/>-->
+    <Tags />
     <Types/>
   </layout>
+
 </template>
 
 <script lang="js">
@@ -14,11 +16,8 @@ import Types from '@/components/money/Types.vue';
 
 export default {
   name: 'Money',
-  components: {Types, Tags, NumberPad},
-  data(){
-    return{
-      tags:['其他','服饰','餐饮','住房','交通'],
-    }
+  components: {
+    Types, Tags, NumberPad,
   }
 
 };
@@ -27,7 +26,7 @@ export default {
 <style lang="scss" scoped>
 
 .layout {
-  min-width: 400px;
+  //min-width: 300px;
 
 }
 </style>

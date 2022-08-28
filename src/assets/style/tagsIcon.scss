@@ -1,0 +1,18 @@
+@import "~@/assets/style/helper.scss";
+.other {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-family: $font-hei;
+  letter-spacing: 3px;
+  .icon {
+    width: 44px;
+    height: 44px;
+    color: #ffff;
+    margin-right: .5em;
+    padding: 4px;
+    border-radius: 50%;
+    background: #F0625A;
+  }
+}
