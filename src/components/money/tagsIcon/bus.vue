@@ -1,16 +1,11 @@
 <template>
-  <div>
+  <TagsLayout>
     <span class="other"><Icon name="bus"/>公交</span>
-  </div>
+  </TagsLayout>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'bus'
+  name: 'bus',
 };
 </script>
-
-<style lang="scss" scoped>
-@import "~@/assets/style/tagsIcon.scss";
-
-</style>

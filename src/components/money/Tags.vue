@@ -10,8 +10,7 @@
       <li>
         <div @click="select('other')">
           <span @click="changeBg">
-            <Icon name="other" :style="isActive=='其他' ? selected : '' "/>
-            <p>其他</p>
+            <Icon name="other" :style="isActive=='其他' ? selected : '' "/><p>其他</p>
           </span>
         </div>
       </li>
@@ -76,9 +75,9 @@
         <Icon name="red_packet" :style="isActive=='红包'?selected:''"/><p>红包</p></span>
       </div></li>
     </ul>
-    <div class="add">
-      <button>新增标签</button>
-    </div>
+<!--    <div class="add">-->
+<!--      <button>新增标签</button>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -102,11 +101,14 @@ import shuidianmei from "@/components/money/tagsIcon/shuidianmei";
 import message from "@/components/money/tagsIcon/message";
 import red_packet from "@/components/money/tagsIcon/red_packet";
 
+import TagsLayout from "@/components/money/TagsLayout";
+
 export default {
   components: {
     other, shop, canyin, house, bus,
     clothes, riyongpin, food_ingredient, junk_food, yanjiucha,
-    study, medical, shuidianmei, message, red_packet, recreation
+    study, medical, shuidianmei, message, red_packet, recreation,
+    TagsLayout
   },
   data() {
     return {
@@ -160,7 +162,6 @@ export default {
       flex-direction: column;
       font-size: 12px;
       color: $fc1;
-      margin-bottom: 1em;
         span {
           //width: 40px;
           //height: 70px;
@@ -191,19 +192,10 @@ export default {
 
   > .new {
     height: 70px;
-    padding: 5px 32px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
-    border-bottom: .1em solid rgb(8, 8, 8, 0.3);
-
-    //  button {
-    //    background: transparent;
-    //    border: none;
-    //    color: #999;
-    //    border-bottom: 1px solid;
-    //    padding: 0 3px;
-    //  }
+    border-bottom: .1px solid rgb(8, 8, 8, 0.3);
   }
-
 }
 </style>

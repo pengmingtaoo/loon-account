@@ -1,11 +1,25 @@
+<template>
+  <div>
+    <slot/>
+  </div>
+
+</template>
+
+<script lang="ts">
+export default {
+  name: 'TagsLayout'
+};
+</script>
+
+<style lang="scss" scoped>
 @import "~@/assets/style/helper.scss";
 .other {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-family: $font-hei;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+
   .icon {
     width: 44px;
     height: 44px;
@@ -16,3 +30,4 @@
     background: #F0625A;
   }
 }
+</style>

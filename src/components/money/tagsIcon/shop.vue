@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <TagsLayout>
     <span class="other"><Icon name="shop"/>购物</span>
-  </div>
+  </TagsLayout>
 </template>
 
 <script lang="ts">
@@ -9,8 +9,3 @@ export default {
   name: 'shop'
 };
 </script>
-
-<style lang="scss" scoped>
-@import "~@/assets/style/tagsIcon.scss";
-
-</style>

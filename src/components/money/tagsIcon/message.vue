@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <TagsLayout>
   <span class="other"> <Icon name="message"/>
         通讯</span>
-  </div>
+  </TagsLayout>
 </template>
 
 <script lang="ts">
@@ -10,7 +10,3 @@ export default {
   name: 'message'
 };
 </script>
-
-<style lang="scss" scoped>
-@import "~@/assets/style/tagsIcon.scss";
-</style>

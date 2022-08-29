@@ -111,7 +111,7 @@ export default class numberPad extends Vue {
 
   > .buttons {
     @extend %clearFix;
-    $h2: 8vh;
+    $h2: 7vh;
 
     > button {
       width: 25%;

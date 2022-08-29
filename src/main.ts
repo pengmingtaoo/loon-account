@@ -6,15 +6,14 @@ import store from './store';
 import Nav from '@/components/Nav.vue';
 import Layout from '@/components/Layout.vue';
 import Icon from '@/components/Icon.vue';
-import numberPad from '@/components/money/NumberPad.vue';
-import tags from '@/components/money/Tags.vue';
+import TagsLayout from '@/components/money/TagsLayout.vue';
 
 Vue.config.productionTip = false;
 Vue.component('Nav', Nav);
 Vue.component('Layout',Layout);
 Vue.component('Icon',Icon);
-Vue.component('numberPad',numberPad);
-Vue.component('tags',tags);
+Vue.component('TagsLayout',TagsLayout);
+
 
 new Vue({
   router,
