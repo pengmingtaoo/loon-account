@@ -61,6 +61,7 @@ export default class numberPad extends Vue {
 
   ok() {
     this.$emit('update:value', this.output);
+    this.$emit('submit',this.output);
   }
 
   clear() {
@@ -81,7 +82,6 @@ export default class numberPad extends Vue {
     min-height: 46px;
     padding: 6px 10px;
   }
-
   > .buttons {
     @extend %clearFix;
     $h2: 7vh;
@@ -97,14 +97,11 @@ export default class numberPad extends Vue {
         height: $h2*3;
         float: right;
       }
-
       .icon {
         width: 30px;
         height: 30px;
       }
-
       $c: #fff;
-
       &:nth-child(1),
       &:nth-child(2),
       &:nth-child(3),
