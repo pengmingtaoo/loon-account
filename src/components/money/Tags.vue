@@ -4,7 +4,6 @@
       <keep-alive include="">
         <component :is="newTag"></component>
       </keep-alive>
-
     </div>
     <ul class="current">
       <li>
@@ -14,121 +13,154 @@
           </span>
         </div>
       </li>
-      <li><div @click="select('shop')">
+      <li>
+        <div @click="select('shop')">
         <span @click="changeBg">
             <Icon name="shop" :style="isActive=='购物'?selected:''"/><p>购物</p></span>
-      </div></li>
-      <li><div @click="select('canyin')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('canyin')">
          <span @click="changeBg">
         <Icon name="canyin" :style="isActive=='餐饮'?selected:''"/><p>餐饮</p></span>
-      </div></li>
-      <li><div @click="select('house')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('house')">
         <span @click="changeBg">
         <Icon name="house" :style="isActive=='住房'?selected:''"/><p>住房</p></span>
-      </div></li>
-      <li><div @click="select('bus')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('bus')">
         <span @click="changeBg">
         <Icon name="bus" :style="isActive=='交通'?selected:''"/><p>交通</p></span>
-      </div></li>
-      <li><div @click="select('clothes')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('clothes')">
         <span @click="changeBg">
         <Icon name="clothes" :style="isActive=='服饰'?selected:''"/><p>服饰</p></span>
-      </div></li>
-      <li><div @click="select('riyongpin')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('riyongpin')">
         <span @click="changeBg">
         <Icon name="riyongpin" :style="isActive=='日用品'?selected:''"/><p>日用品</p></span>
-      </div></li>
-      <li><div @click="select('recreation')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('recreation')">
         <span @click="changeBg">
         <Icon name="recreation" :style="isActive=='娱乐'?selected:''"/><p>娱乐</p></span>
-      </div></li>
-      <li><div @click="select('food_ingredient')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('food_ingredient')">
         <span @click="changeBg">
         <Icon name="food_ingredient" :style="isActive=='食材'?selected:''"/><p>食材</p></span>
-      </div></li>
-      <li><div @click="select('junk_food')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('junk_food')">
         <span @click="changeBg">
         <Icon name="junk_food" :style="isActive=='零食'?selected:''"/><p>零食</p></span>
-      </div></li>
-      <li><div @click="select('yanjiucha')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('yanjiucha')">
         <span @click="changeBg">
         <Icon name="yanjiucha" :style="isActive=='烟酒茶'?selected:''"/><p>烟酒茶</p></span>
-      </div></li>
-      <li><div @click="select('study')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('study')">
         <span @click="changeBg">
         <Icon name="study" :style="isActive=='学习'?selected:''"/><p>学习</p></span>
-      </div></li>
-      <li><div @click="select('medical')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('medical')">
         <span @click="changeBg">
         <Icon name="medical" :style="isActive=='医疗'?selected:''"/><p>医疗</p></span>
-      </div></li>
-      <li><div @click="select('shuidianmei')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('shuidianmei')">
         <span @click="changeBg">
         <Icon name="shuidianmei" :style="isActive=='水电煤'?selected:''"/><p>水电煤</p></span>
-      </div></li>
-      <li><div @click="select('message')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('message')">
         <span @click="changeBg">
         <Icon name="message" :style="isActive=='通讯'?selected:''"/><p>通讯</p></span>
-      </div></li>
-      <li><div @click="select('red_packet')">
+        </div>
+      </li>
+      <li>
+        <div @click="select('red_packet')">
         <span @click="changeBg">
         <Icon name="red_packet" :style="isActive=='红包'?selected:''"/><p>红包</p></span>
-      </div></li>
+        </div>
+      </li>
     </ul>
-<!--    <div class="add">-->
-<!--      <button>新增标签</button>-->
-<!--    </div>-->
+    <!--    <div class="add">-->
+    <!--      <button>新增标签</button>-->
+    <!--    </div>-->
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import other from '@/components/money/tagsIcon/other.vue';
-import shop from "@/components/money/tagsIcon/shop";
-import canyin from "@/components/money/tagsIcon/canyin";
-import house from "@/components/money/tagsIcon/house";
-import bus from "@/components/money/tagsIcon/bus";
+import shop from '@/components/money/tagsIcon/shop.vue';
+import canyin from '@/components/money/tagsIcon/canyin.vue';
+import house from '@/components/money/tagsIcon/house.vue';
+import bus from '@/components/money/tagsIcon/bus.vue';
 
-import clothes from "@/components/money/tagsIcon/clothes";
-import riyongpin from "@/components/money/tagsIcon/riyongpin";
-import food_ingredient from "@/components/money/tagsIcon/food_ingredient";
-import junk_food from "@/components/money/tagsIcon/junk_food";
-import yanjiucha from "@/components/money/tagsIcon/yanjiucha";
-import recreation from "@/components/money/tagsIcon/recreation";
+import clothes from '@/components/money/tagsIcon/clothes.vue';
+import riyongpin from '@/components/money/tagsIcon/riyongpin.vue';
+import food_ingredient from '@/components/money/tagsIcon/food_ingredient.vue';
+import junk_food from '@/components/money/tagsIcon/junk_food.vue';
+import yanjiucha from '@/components/money/tagsIcon/yanjiucha.vue';
+import recreation from '@/components/money/tagsIcon/recreation.vue';
 
-import study from "@/components/money/tagsIcon/study";
-import medical from "@/components/money/tagsIcon/medical";
-import shuidianmei from "@/components/money/tagsIcon/shuidianmei";
-import message from "@/components/money/tagsIcon/message";
-import red_packet from "@/components/money/tagsIcon/red_packet";
+import study from '@/components/money/tagsIcon/study.vue';
+import medical from '@/components/money/tagsIcon/medical.vue';
+import shuidianmei from '@/components/money/tagsIcon/shuidianmei.vue';
+import message from '@/components/money/tagsIcon/message.vue';
+import red_packet from '@/components/money/tagsIcon/red_packet.vue';
 
-import TagsLayout from "@/components/money/TagsLayout";
+import TagsLayout from '@/components/money/TagsLayout.vue';
 
-export default {
-  components: {
-    other, shop, canyin, house, bus,
-    clothes, riyongpin, food_ingredient, junk_food, yanjiucha,
-    study, medical, shuidianmei, message, red_packet, recreation,
-    TagsLayout
-  },
-  data() {
-    return {
-      newTag: 'other',
-      isActive: '其他',
-      selected: {
-        background: '#F0625A',
-        color: '#fff',
-        borderRadius: '50%',
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
+
+@Component({
+  components:
+      {
+        other, shop, canyin, house, bus,
+        clothes, riyongpin, food_ingredient, junk_food, yanjiucha,
+        study, medical, shuidianmei, message, red_packet, recreation,
+        TagsLayout
       }
-    }
-  },
-  methods: {
-    select(name) {
-      this.newTag = name;
+})
+export default class Tags extends Vue {
+  newTag = 'other';
+  isActive = '其他';
+  selected = {
+    background: '#F0625A',
+    color: '#fff',
+    borderRadius: '50%',
+  };
 
-    },
-    changeBg(e) {
-      this.isActive = e.currentTarget.innerText;
-    }
+  select(name: string) {
+    this.newTag = name;
+  }
+
+  changeBg(e: { currentTarget: { innerText: string; }; }) {
+    this.isActive = e.currentTarget.innerText;
+    // console.log( this.isActive);
+    this.$emit('update:value',this.isActive);
   }
 }
 
@@ -162,33 +194,32 @@ export default {
       flex-direction: column;
       font-size: 12px;
       color: $fc1;
-        span {
-          //width: 40px;
-          //height: 70px;
-          display: block;
-          text-align: center;
-          letter-spacing: 1px;
 
-          .icon {
-            width: 40px;
-            height: 40px;
-            padding: 5px;
-            background: #F6F6F6;
-            border-radius: 50%;
-          }
+      span {
+        display: block;
+        text-align: center;
+        letter-spacing: 1px;
+
+        .icon {
+          width: 40px;
+          height: 40px;
+          padding: 5px;
+          background: #F6F6F6;
+          border-radius: 50%;
+        }
       }
     }
   }
 
-  .add {
-    font-size: 14px;
-    margin-left: 1em;
-
-    button {
-      border: none;
-      background: inherit;
-    }
-  }
+  //.add {
+  //  font-size: 14px;
+  //  margin-left: 1em;
+  //
+  //  button {
+  //    border: none;
+  //    background: inherit;
+  //  }
+  //}
 
   > .new {
     height: 70px;

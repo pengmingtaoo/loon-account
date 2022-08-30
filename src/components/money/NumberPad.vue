@@ -1,11 +1,5 @@
 <template>
   <div class="numberPad">
-    <div>
-      <div class="notes">
-        <span class="name">备注</span>
-        <input type="text" v-model="value" placeholder="备注一下咯">
-      </div>
-    </div>
     <div class="output">{{ money }}{{ output }}</div>
     <div class="buttons">
       <button @click="inputConent">1</button>
@@ -30,13 +24,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Watch} from 'vue-property-decorator';
 
 @Component
 export default class numberPad extends Vue {
   output = '0';
   money = '￥';
-  value = '';
 
   inputConent(event: MouseEvent) {
     const button = (event.target as HTMLButtonElement);
@@ -59,15 +52,15 @@ export default class numberPad extends Vue {
   }
 
   remove() {
-    if(this.output.length ===1){
+    if (this.output.length === 1) {
       this.output = '0';
-    }else{
-      this.output= this.output.slice(0, -1);
+    } else {
+      this.output = this.output.slice(0, -1);
     }
   }
 
   ok() {
-    return;
+    this.$emit('update:value', this.output);
   }
 
   clear() {
@@ -80,26 +73,6 @@ export default class numberPad extends Vue {
 @import "~@/assets/style/helper.scss";
 
 .numberPad {
-  .notes {
-    background: #f5f5f5;
-    display: block;
-    font-size: 14px;
-    padding-left: 16px;
-    display: flex;
-    align-items: center;
-
-    > .name {
-      padding-right: 16px;
-    }
-
-    > input {
-      padding: 16px 0;
-      flex-grow: 1;
-      background: transparent;
-      border: none;
-    }
-  }
-
   .output {
     font-size: 20px;
     font-family: $font-hei;

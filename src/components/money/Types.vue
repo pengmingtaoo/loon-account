@@ -1,26 +1,38 @@
 <template>
-    <ul class="types">
-      <li :class="type==='_' && 'selected' "
-          @click="selectType('_')">支出
-      </li>
-      <li :class="type==='+' && 'selected' "
-          @click="selectType('+')">收入</li>
-    </ul>
+  <ul class="types">
+    <li :class="type==='_' && 'selected' "
+        @click="selectType('_')">支出
+    </li>
+    <li :class="type==='+' && 'selected' "
+        @click="selectType('+')">收入
+    </li>
+  </ul>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
-export default class types extends  Vue{
+export default class types extends Vue {
+  //不用管是否有初始值
+  // @Prop() readonly value!: string;
+  // type = this.value;
 
-  type = '_'; //'_' 表示支出 '+' 表示收入
-  selectType(type:string){
-    if(type!=='_' && type!=='+'){
-      throw  new Error('type is undefined')
+  type = '_';
+
+  selectType(type: string) {
+    if (type !== '_' && type !== '+') {
+      throw  new Error('type is undefined');
     }
+    //没有初始值，更新默认值
+    // this.$emit('update:value', type);
     this.type = type;
+  }
+
+  @Watch('type')
+  onUpdateType(value: string) {
+    this.$emit('update:value', this.type);
   }
 }
 </script>
