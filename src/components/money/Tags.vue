@@ -159,7 +159,6 @@ export default class Tags extends Vue {
 
   changeBg(e: { currentTarget: { innerText: string; }; }) {
     this.isActive = e.currentTarget.innerText;
-    // console.log( this.isActive);
     this.$emit('update:value',this.isActive);
   }
 }
