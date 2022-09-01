@@ -1,25 +1,26 @@
 <template>
-  <div class="numberPad">
-    <div class="output">{{ money }}{{ output }}</div>
-    <div class="buttons">
-      <button @click="inputConent">1</button>
-      <button @click="inputConent">2</button>
-      <button @click="inputConent">3</button>
-      <button @click="remove">
-        <Icon name="delete"/>
-      </button>
-      <button @click="inputConent">4</button>
-      <button @click="inputConent">5</button>
-      <button @click="inputConent">6</button>
-      <button @click="ok" class="ok">确定</button>
-      <button @click="inputConent">7</button>
-      <button @click="inputConent">8</button>
-      <button @click="inputConent">9</button>
-      <button @click="clear">清零</button>
-      <button class="zero" @click="inputConent">0</button>
-      <button @click="inputConent">.</button>
+    <div class="numberPad">
+      <div class="output">{{ money }}{{ output }}</div>
+      <div class="buttons">
+        <button @click="inputConent">1</button>
+        <button @click="inputConent">2</button>
+        <button @click="inputConent">3</button>
+        <button @click="remove">
+          <Icon name="delete"/>
+        </button>
+        <button @click="inputConent">4</button>
+        <button @click="inputConent">5</button>
+        <button @click="inputConent">6</button>
+        <button @click="ok" class="ok">确定</button>
+        <button @click="inputConent">7</button>
+        <button @click="inputConent">8</button>
+        <button @click="inputConent">9</button>
+        <button @click="clear">清零</button>
+        <button class="zero" @click="inputConent">0</button>
+        <button @click="inputConent">.</button>
+      </div>
     </div>
-  </div>
+
 </template>
 
 <script lang="ts">
@@ -61,7 +62,7 @@ export default class numberPad extends Vue {
 
   ok() {
     this.$emit('update:value', this.output);
-    this.$emit('submit',this.output);
+    this.$emit('submit', this.output);
     this.output = '0';
   }
 
@@ -83,6 +84,7 @@ export default class numberPad extends Vue {
     min-height: 46px;
     padding: 6px 10px;
   }
+
   > .buttons {
     @extend %clearFix;
     $h2: 7vh;
@@ -98,11 +100,14 @@ export default class numberPad extends Vue {
         height: $h2*3;
         float: right;
       }
+
       .icon {
         width: 30px;
         height: 30px;
       }
+
       $c: #fff;
+
       &:nth-child(1),
       &:nth-child(2),
       &:nth-child(3),

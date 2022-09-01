@@ -1,7 +1,7 @@
 <template>
-  <TagsLayout>
+  <TagsIncomeLayout>
     <span class="other"><Icon name="other"/>其他</span>
-  </TagsLayout>
+  </TagsIncomeLayout>
 </template>
 
 <script lang="ts">

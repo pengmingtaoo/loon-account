@@ -1,8 +1,8 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
   <span class="other"><Icon name="study"/>
         学习</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

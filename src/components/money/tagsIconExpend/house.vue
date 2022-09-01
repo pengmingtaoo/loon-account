@@ -1,7 +1,7 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
     <span class="other"><Icon name="house"/>住房</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

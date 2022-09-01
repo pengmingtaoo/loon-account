@@ -1,7 +1,7 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
   <span class="other"><Icon name="red_packet"/>红包</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

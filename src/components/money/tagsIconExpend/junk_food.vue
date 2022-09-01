@@ -1,8 +1,8 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
   <span class="other"><Icon name="junk_food"/>
         零食</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

@@ -1,31 +1,31 @@
 <template>
   <div class="layout-wrapper">
     <div class="content" :class="classPrefix && `${classPrefix}-content`">
-        <slot/>
+      <slot/>
     </div>
     <Nav/>
   </div>
 </template>
-
 <script lang="ts">
 export default {
   name: 'Layout',
-  props:['classPrefix'],
+  props: ['classPrefix'],
 };
 </script>
 <style lang="scss">
-.layout-content{
+.layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
 </style>
 <style lang="scss" scoped>
-.layout-wrapper{
+.layout-wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
-.content{
+
+.content {
   flex-grow: 1;
   overflow: auto;
 }

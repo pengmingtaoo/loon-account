@@ -1,8 +1,8 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
   <span class="other"> <Icon name="message"/>
         通讯</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

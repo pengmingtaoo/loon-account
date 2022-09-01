@@ -1,8 +1,8 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
   <span class="other"><Icon name="yanjiucha"/>
         烟酒茶</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

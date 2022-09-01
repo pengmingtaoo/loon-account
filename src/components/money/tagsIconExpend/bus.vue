@@ -1,7 +1,7 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
     <span class="other"><Icon name="bus"/>公交</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

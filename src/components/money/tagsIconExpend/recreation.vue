@@ -1,8 +1,8 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
   <span class="other"><Icon name="recreation"/>
         娱乐</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

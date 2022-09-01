@@ -1,20 +1,17 @@
 <template>
-  <layout classPrefix="layout" class="layout">
+  <layout classPrefix="layout" class="money">
     <Number-pad @update:value="onUpdateNumberPad" @submit="saveRecord"/>
     <Notes @update:value="onUpdateNotes"/>
-    <Tags @update:value="onUpdateTags"/>
-    <!--    <Types :value="record.type" @update:value="onUpdateType"/>-->
-    {{recordList}}
-
+    <router-view :value="record.tags" @update:value="onUpdateTags"/>
+<!--        <Types :value="record.type" @update:value="onUpdateType"/>-->
     <Types :value.sync="record.type"/>
   </layout>
-
 </template>
 
 <script lang="ts">
 
 import NumberPad from '@/components/money/NumberPad.vue';
-import Tags from '@/components/money/Tags.vue';
+import Tags from '@/components/money/TagsMinus.vue';
 import Types from '@/components/money/Types.vue';
 import Notes from '@/components/money/Note.vue';
 
@@ -51,7 +48,7 @@ export default class Money extends Vue {
   saveRecord() {
     //深拷贝
     const record2: RecordItem = model.clone(this.record);
-    record2.createdAt=moment(new Date()).format("YYYY年MM月DD日 hh:mm:ss");
+    record2.createdAt=moment(new Date()).format("YYYY年MM月DD日 HH:mm:ss");
     this.recordList.push(record2);
   }
 

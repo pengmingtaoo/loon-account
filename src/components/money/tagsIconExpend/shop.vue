@@ -1,7 +1,7 @@
 <template>
-  <TagsLayout>
+  <TagsExpendLayout>
     <span class="other"><Icon name="shop"/>购物</span>
-  </TagsLayout>
+  </TagsExpendLayout>
 </template>
 
 <script lang="ts">

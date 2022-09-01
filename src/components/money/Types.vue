@@ -1,10 +1,15 @@
 <template>
   <ul class="types">
-    <li :class="value==='_' && 'selected' "
-        @click="selectType('_')">支出
+    <li :class="value==='_'"
+        @click="selectType('_')">
+      <router-link to="TagsMinus" active-class="selected">
+        支出
+      </router-link>
     </li>
-    <li :class="value==='+' && 'selected' "
-        @click="selectType('+')">收入
+    <li :class="value==='+'"
+        @click="selectType('+')">
+      <router-link to="TagsAdd" active-class="selected">收入
+      </router-link>
     </li>
   </ul>
 </template>
@@ -17,6 +22,7 @@ import {Component, Prop, Watch} from 'vue-property-decorator';
 export default class types extends Vue {
   //不用管是否有初始值
   @Prop() readonly value!: string;
+
   // type = this.value.toString();
 
   selectType(type: string) {
@@ -39,7 +45,7 @@ export default class types extends Vue {
   justify-content: center;
   align-items: center;
 
-  > li {
+  li {
     height: 48px;
     display: flex;
     justify-content: center;
@@ -47,7 +53,7 @@ export default class types extends Vue {
     position: relative;
     margin: 0 20px;
 
-    &.selected::after {
+    .selected::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -57,5 +63,7 @@ export default class types extends Vue {
       background: #333;
     }
   }
+
+
 }
 </style>
