@@ -2,14 +2,11 @@
   <ul class="types">
     <li :class="value==='_'"
         @click="selectType('_')">
-      <router-link to="TagsMinus" active-class="selected">
-        支出
-      </router-link>
+      支出
     </li>
     <li :class="value==='+'"
         @click="selectType('+')">
-      <router-link to="TagsAdd" active-class="selected">收入
-      </router-link>
+      收入
     </li>
   </ul>
 </template>
@@ -41,7 +38,6 @@ export default class types extends Vue {
   display: flex;
   text-align: center;
   font-size: 20px;
-  display: flex;
   justify-content: center;
   align-items: center;
 

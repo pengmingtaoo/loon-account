@@ -6,8 +6,8 @@
     </router-link>
 
     <router-link to="/labels" class="item" active-class="selected">
-      <Icon name="label"/>
-      标签
+      <Icon name="bill"/>
+      流水
     </router-link>
 
     <router-link to="/statistics" class="item" active-class="selected">

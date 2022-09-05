@@ -8,7 +8,10 @@
 
 //接收一个requireContext对象，循环调用它的key,进行requireContext
 //typescript必须要我们声明requireContext的类型
-let importAll = (requireContext:__WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
+import {Component} from 'vue-property-decorator';
+import Vue from 'vue';
+
+let importAll = (requireContext:__WebpackModuleApi.RequireContext) => {return requireContext.keys().forEach(requireContext)};
 
 try{
   //指定要去哪个目录搜索
@@ -18,7 +21,7 @@ try{
   console.log(error);
 }
 
-export default {
+export default{
   name: 'Icon',
   props: ['name'],
 };
@@ -28,9 +31,6 @@ export default {
 .icon {
   width: 1em;
   height: 1em;
-}
-
-.icon {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
