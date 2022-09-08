@@ -42,20 +42,20 @@ export default class Tagss extends Vue {
     if (name === '') {
       window.alert('标签名不能为空！');
     } else
-      if (this.dataSoure) {
-      this.dataSoure.push(name!);//不能改外部数据
-      // tagsListModel.create(name!);
-      this.$emit('update:dataSource',[...this.dataSoure,name]);
-      console.log(name);
-    }
-    // if(name){
-    //   const message = tagsListModel.create(name);
-    //   if(message === 'duplicated'){
-    //     window.alert('标签名重复');
-    //   }else if(message === 'success'){
-    //     window.alert('添加成功！');
-    //   }
+    //   if (this.dataSoure) {
+    //   // this.dataSoure.push(name!);//不能改外部数据
+    //   // tagsListModel.create(name!);
+    //   this.$emit('update:dataSource',[...this.dataSoure,name]);
+    //   console.log(name);
     // }
+    if(name){
+      const message = tagsListModel.create(name);
+      if(message === 'duplicated'){
+        window.alert('标签名重复');
+      }else if(message === 'success'){
+        window.alert('添加成功！');
+      }
+    }
   }
 }
 </script>

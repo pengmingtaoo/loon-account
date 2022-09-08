@@ -1,14 +1,9 @@
 <template>
   <layout classPrefix="layout" class="moneyLayout">
     <Number-pad :value.sync="record.amount" @submit="saveRecord"/>
-    <FormItem
-        field-name="备注"
-        placeholder="请在这里输入备注"
+    <FormItem field-name="备注" placeholder="请在这里输入备注"
         @update:value="onUpdateNotes"/>
-    <div>{{record}}</div>
-    <div>{{recordStorage}}</div>
-    <Tagss :data-soure.sync="tags" @update:value="onUpdateTags"/>
-    <!--    <Types :value="record.type" @update:value="onUpdateType"/>-->
+    <Tagss :data-soure.sync="tagss" @update:value="onUpdateTags"/>
     <Types :value.sync="record.type"/>
   </layout>
 </template>
@@ -33,8 +28,7 @@ const tagsList = tagsListModel.fetch();
   }
 })
 export default class Money extends Vue {
-  tags = tagsList;
-
+  tagss = tagsList;
   //收集的数据记录record
   record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
   //收集之后存入数组
@@ -59,8 +53,7 @@ export default class Money extends Vue {
     const deepClone: RecordItem = recordListModel.clone(this.record);
     deepClone.createdDate = moment(new Date()).format('YYYY年MM月DD日 HH:mm:ss');
     this.recordStorage.push(deepClone);//更新数据
-    console.log('recordStorage');
-    console.log(recordStorage);
+
   }
 
   @Watch('recordStorage')
