@@ -5,8 +5,6 @@
   </div>
 </template>
 
-
-@Component
 <script lang="ts">
 import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
@@ -15,6 +13,8 @@ import {Component, Watch} from 'vue-property-decorator';
 export default class Notes extends Vue {
   value = '';
   name = 'Note';
+
+
 
   @Watch('value')
   onValueChanged(value: string) {

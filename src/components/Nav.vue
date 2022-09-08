@@ -1,11 +1,11 @@
 <template>
   <nav>
-    <router-link to="/money" class="item" active-class="selected">
+    <router-link :to="{name:'money'}" class="item" active-class="selected">
       <Icon name="money"/>
       记账
     </router-link>
 
-    <router-link to="/labels" class="item" active-class="selected">
+    <router-link :to="{name:'detail'}" class="item" active-class="selected">
       <Icon name="bill"/>
       流水
     </router-link>

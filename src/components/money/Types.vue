@@ -1,34 +1,33 @@
 <template>
   <ul class="types">
-    <li :class="value==='_'"
-        @click="selectType('_')">
-      支出
+    <li :class="value==='_' && 'selected' "
+        @click="selectType('_')">支出
     </li>
-    <li :class="value==='+'"
-        @click="selectType('+')">
-      收入
-    </li>
+    <li :class="value==='+' && 'selected' "
+        @click="selectType('+')">收入</li>
   </ul>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component, Watch,Prop} from 'vue-property-decorator';
 
 @Component
-export default class types extends Vue {
-  //不用管是否有初始值
-  @Prop() readonly value!: string;
-
-  // type = this.value.toString();
-
-  selectType(type: string) {
-    if (type !== '_' && type !== '+') {
-      throw  new Error('type is undefined');
+export default class types extends  Vue{
+  @Prop() readonly value!:string;//!不要关心初始值
+  // type = '_'; //'_' 表示支出 '+' 表示收入
+  selectType(type:string){
+    if(type!=='_' && type!=='+'){
+      throw  new Error('type is undefined')
     }
-    //没有初始值，更新默认值
-    this.$emit('update:value', type);
+    this.$emit('update:value',type);
+    // this.type = type;
   }
+
+  // @Watch('type')
+  // onTypeChange(value:string){
+  //   this.$emit('update:value',value);
+  // }
 }
 </script>
 
@@ -38,10 +37,11 @@ export default class types extends Vue {
   display: flex;
   text-align: center;
   font-size: 20px;
+  display: flex;
   justify-content: center;
   align-items: center;
 
-  li {
+  > li {
     height: 48px;
     display: flex;
     justify-content: center;
@@ -49,7 +49,7 @@ export default class types extends Vue {
     position: relative;
     margin: 0 20px;
 
-    .selected::after {
+    &.selected::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -59,7 +59,5 @@ export default class types extends Vue {
       background: #333;
     }
   }
-
-
 }
 </style>

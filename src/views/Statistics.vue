@@ -1,9 +1,9 @@
 <template>
-  <div>
+
     <layout>
       <p>Statistics</p>
     </layout>
-  </div>
+
 </template>
 
 <script lang="ts">

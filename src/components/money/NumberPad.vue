@@ -1,36 +1,36 @@
 <template>
-    <div class="numberPad">
-      <div class="output">{{ money }}{{ output }}</div>
-      <div class="buttons">
-        <button @click="inputConent">1</button>
-        <button @click="inputConent">2</button>
-        <button @click="inputConent">3</button>
-        <button @click="remove">
-          <Icon name="delete"/>
-        </button>
-        <button @click="inputConent">4</button>
-        <button @click="inputConent">5</button>
-        <button @click="inputConent">6</button>
-        <button @click="ok" class="ok">确定</button>
-        <button @click="inputConent">7</button>
-        <button @click="inputConent">8</button>
-        <button @click="inputConent">9</button>
-        <button @click="clear">清零</button>
-        <button class="zero" @click="inputConent">0</button>
-        <button @click="inputConent">.</button>
-      </div>
+  <div class="numberPad">
+    <div class="output">{{ money }}{{ output }}</div>
+    <div class="buttons">
+      <button @click="inputConent">1</button>
+      <button @click="inputConent">2</button>
+      <button @click="inputConent">3</button>
+      <button @click="remove">
+        <Icon name="delete"/>
+      </button>
+      <button @click="inputConent">4</button>
+      <button @click="inputConent">5</button>
+      <button @click="inputConent">6</button>
+      <button @click="ok" class="ok">确定</button>
+      <button @click="inputConent">7</button>
+      <button @click="inputConent">8</button>
+      <button @click="inputConent">9</button>
+      <button @click="clear">清零</button>
+      <button class="zero" @click="inputConent">0</button>
+      <button @click="inputConent">.</button>
     </div>
-
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Watch} from 'vue-property-decorator';
+import {Component,Prop} from 'vue-property-decorator';
 
 @Component
 export default class numberPad extends Vue {
-  output = '0';
+  @Prop() readonly value!:number;
   money = '￥';
+  output = this.value.toString();
 
   inputConent(event: MouseEvent) {
     const button = (event.target as HTMLButtonElement);
@@ -53,16 +53,16 @@ export default class numberPad extends Vue {
   }
 
   remove() {
-    if (this.output.length === 1) {
+    if(this.output.length ===1){
       this.output = '0';
-    } else {
-      this.output = this.output.slice(0, -1);
+    }else{
+      this.output= this.output.slice(0, -1);
     }
   }
 
   ok() {
-    this.$emit('update:value', this.output);
-    this.$emit('submit', this.output);
+   this.$emit('update:value',this.output);
+    this.$emit('submit',this.output);
     this.output = '0';
   }
 
@@ -76,6 +76,26 @@ export default class numberPad extends Vue {
 @import "~@/assets/style/helper.scss";
 
 .numberPad {
+  .notes {
+    background: #f5f5f5;
+    display: block;
+    font-size: 14px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+
+    > .name {
+      padding-right: 16px;
+    }
+
+    > input {
+      padding: 16px 0;
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+    }
+  }
+
   .output {
     font-size: 20px;
     font-family: $font-hei;
@@ -87,7 +107,7 @@ export default class numberPad extends Vue {
 
   > .buttons {
     @extend %clearFix;
-    $h2: 7vh;
+    $h2: 8vh;
 
     > button {
       width: 25%;

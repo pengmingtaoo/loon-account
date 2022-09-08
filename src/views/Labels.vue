@@ -1,35 +1,35 @@
 <template>
   <layout class="labelsLayout">
-    <header>懒人记账</header>
-    <main>
-      <ul class="parcel">
-        <li>本月支出</li>
-        <li><span class="expend">暂无支出</span></li>
-        <li><span>本月收入</span><span class="income">暂无收入</span></li>
-        <li class="chart">
-          <Icon name="statistics"/>
-          查看图表分析
-        </li>
-      </ul>
-      <div class="todayExpend">
-        <span>今日支出 ￥0</span>
-        <span>今日收入 ￥0</span>
-      </div>
-    </main>
-    <footer>
-      <ol class="tags">
-        <li v-for="tag in tags" :key="tag">
-          <div class="item">
-            <div class="tag">
-              <Icon name="other"/>
-              {{tag}}
-            </div>
-            <span>99</span>
-          </div>
-        </li>
+<!--    <header>懒人记账</header>-->
+<!--    <main>-->
+<!--      <ul class="parcel">-->
+<!--        <li>本月支出</li>-->
+<!--        <li><span class="expend">暂无支出</span></li>-->
+<!--        <li><span>本月收入</span><span class="income">暂无收入</span></li>-->
+<!--        <li class="chart">-->
+<!--          <Icon name="statistics"/>-->
+<!--          查看图表分析-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <div class="todayExpend">-->
+<!--        <span>今日支出 ￥0</span>-->
+<!--        <span>今日收入 ￥0</span>-->
+<!--      </div>-->
+<!--    </main>-->
+<!--    <footer>-->
+<!--      <ol class="tags">-->
+<!--        <li v-for="tag in tags" :key="tag">-->
+<!--          <div class="item">-->
+<!--            <div class="tag">-->
+<!--              <Icon name="other"/>-->
+<!--              {{tag}}-->
+<!--            </div>-->
+<!--            <span>99</span>-->
+<!--          </div>-->
+<!--        </li>-->
 
-      </ol>
-    </footer>
+<!--      </ol>-->
+<!--    </footer>-->
   </layout>
 </template>
 
