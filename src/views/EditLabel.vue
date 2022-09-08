@@ -6,7 +6,7 @@
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <FormItem field-name="标签名" placeholder="请在这里输入标签名"/>
+      <FormItem :value="tag.name" field-name="标签名" placeholder="请在这里输入标签名"/>
     </div>
     <div class="button-Wrapper">
       <Button>删除标签</Button>
@@ -20,12 +20,15 @@ import {Component} from 'vue-property-decorator';
 import tagsListModel from '@/components/models/tagsListModel';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
+import {createLogger} from 'vuex';
 
 @Component({
   components: {FormItem, Button}
 })
 export default class EditLabel extends Vue {
-  name = 'EditLabel';
+
+  // eslint-disable-next-line no-undef
+  tag?:Tag = undefined;
 
   created() {
     const id = this.$route.params.id;//$route获取路由的信息
@@ -33,7 +36,8 @@ export default class EditLabel extends Vue {
     const tags = tagsListModel.data;
     const tag = tags.filter(t => t.id === id)[0];
     if (tag) {
-      console.log(tag);
+      this.tag = tag;
+      console.log(this.tag);
     } else {
       // this.$router.push('/404');
       this.$router.replace('/404');

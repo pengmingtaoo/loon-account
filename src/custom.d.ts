@@ -1,9 +1,9 @@
-// type TagItem = {
-//   name: string;
-//   value: string;
-// }
+type Tag = {
+  id:string,
+  name:string
+}
 type RecordItem = {
-  tags: string[];
+  tags: Tag[];
   notes: string;
   type: string;
   amount: number;//数据类型

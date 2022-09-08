@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button @click="create">新增标签</button>
+      <Button @click.native="createTag">新增标签</Button>
     </div>
     <ul class="current">
       <li v-for="tag in dataSoure" :key="tag.id">
@@ -18,11 +18,14 @@
 
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
+import tagsListModel from '@/components/models/tagsListModel';
+import Button from '@/components/Button.vue';
 
-@Component
+@Component({components:{Button}})
 export default class Tagss extends Vue {
   @Prop() readonly dataSoure: string[] | undefined;
   selectedTags: string[] = [];
+  tags = tagsListModel.data;
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -34,14 +37,25 @@ export default class Tagss extends Vue {
     this.$emit('update:value',this.selectedTags)
   }
 
-  create() {
-    const tag = window.prompt('请输入标签名！');
-    if (tag === '') {
+  createTag() {
+    const name = window.prompt('请输入标签名！');
+    if (name === '') {
       window.alert('标签名不能为空！');
-    } else if (this.dataSoure) {
-      this.dataSoure.push(tag!);//不能改外部数据
-      this.$emit('update:datasource',[...this.dataSoure]);
+    } else
+      if (this.dataSoure) {
+      this.dataSoure.push(name!);//不能改外部数据
+      // tagsListModel.create(name!);
+      this.$emit('update:dataSource',[...this.dataSoure,name]);
+      console.log(name);
     }
+    // if(name){
+    //   const message = tagsListModel.create(name);
+    //   if(message === 'duplicated'){
+    //     window.alert('标签名重复');
+    //   }else if(message === 'success'){
+    //     window.alert('添加成功！');
+    //   }
+    // }
   }
 }
 </script>
@@ -65,7 +79,7 @@ export default class Tagss extends Vue {
       $h: 24px;
       $bg: #d9d9d9;
       $bg2: #F0625A;
-      width: 20%;
+      //width: 20%;
       height: $h;
 
       .dtags {
