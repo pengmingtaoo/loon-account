@@ -4,7 +4,8 @@
       <Icon name="left"/>
       <span>编辑标签</span>
     </div>
-
+    <Notes field-name="标签名"
+    placeholder="请在这里输入标签名"/>
   </layout>
 </template>
 
@@ -12,8 +13,11 @@
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import tagsListModel from '@/components/models/tagsListModel';
+import Notes from '@/components/money/Notes.vue';
 
-@Component
+@Component({
+  components: {Notes}
+})
 export default class EditLabel extends Vue{
   name= 'EditLabel';
   created(){

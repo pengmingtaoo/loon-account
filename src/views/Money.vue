@@ -1,7 +1,9 @@
 <template>
   <layout classPrefix="layout" class="moneyLayout">
     <Number-pad :value.sync="record.amount" @submit="saveRecord"/>
-    <Notes @update:value="onUpdateNotes"/>
+    <Notes field-name="备注"
+           placeholder="请在这里输入备注"
+           @update:value="onUpdateNotes"/>
     <Tagss :data-soure.sync="tags" @update:value="onUpdateTags"/>
     <!--    <Types :value="record.type" @update:value="onUpdateType"/>-->
     <Types :value.sync="record.type"/>
