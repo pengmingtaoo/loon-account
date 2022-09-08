@@ -1,9 +1,10 @@
 <template>
   <layout classPrefix="layout" class="moneyLayout">
     <Number-pad :value.sync="record.amount" @submit="saveRecord"/>
-    <Notes field-name="备注"
-           placeholder="请在这里输入备注"
-           @update:value="onUpdateNotes"/>
+    <FormItem
+        field-name="备注"
+        placeholder="请在这里输入备注"
+        @update:value="onUpdateNotes"/>
     <Tagss :data-soure.sync="tags" @update:value="onUpdateTags"/>
     <!--    <Types :value="record.type" @update:value="onUpdateType"/>-->
     <Types :value.sync="record.type"/>
@@ -12,7 +13,7 @@
 
 <script lang="ts">
 import NumberPad from '@/components/money/NumberPad.vue';
-import Notes from '@/components/money/Notes.vue';
+import FormItem from '@/components/money/FormItem.vue';
 import Tagss from '@/components/money/Tagss.vue';
 import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
@@ -26,18 +27,18 @@ const tagsList = tagsListModel.fetch();
 
 @Component({
   components: {
-    NumberPad, Notes, Tagss, Types
+    NumberPad, FormItem, Tagss, Types
   }
 })
 export default class Money extends Vue {
   tags = tagsList;
   //收集的数据记录record
-  record: RecordItem = {tags:[], notes: '', type: '_', amount: 0};
-  recordStorage: RecordItem[] =recordStorage;
+  record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
+  recordStorage: RecordItem[] = recordStorage;
 
 
-      onUpdateTags(value: string[]) {
-        this.record.tags = value;
+  onUpdateTags(value: string[]) {
+    this.record.tags = value;
   }
 
   // onUpdateTypes(value:string) {
@@ -52,13 +53,14 @@ export default class Money extends Vue {
   // }
 ////深拷贝，每次push之前复制一份
   saveRecord() {
-    const deepClone: RecordItem =recordListModel.clone(this.record);
-    deepClone.createdDate = moment(new Date()).format("YYYY年MM月DD日 HH:mm:ss");
+    const deepClone: RecordItem = recordListModel.clone(this.record);
+    deepClone.createdDate = moment(new Date()).format('YYYY年MM月DD日 HH:mm:ss');
     this.recordStorage.push(deepClone);//更新数据
 
   }
+
   @Watch('recordStorage')
-  onRecordStorageChange(){
+  onRecordStorageChange() {
     recordListModel.save(this.recordStorage);//往数据里添加东西
   }
 }

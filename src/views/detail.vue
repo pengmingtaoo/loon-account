@@ -7,7 +7,8 @@
       </router-link>
     </div>
     <div class="createTag-wrapper">
-      <button class="createTag" @click="createTag">新建标签</button>
+      <Button class="createTag" @click.native="createTag">新建标签</Button>
+<!--      natie 原生的natie事件，监听button的点击事件-->
     </div>
   </layout>
 </template>
@@ -16,10 +17,13 @@
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import tagsListModel from '@/components/models/tagsListModel';
+import Button from '@/components/Button.vue';
 
 tagsListModel.fetch();
 
-@Component
+@Component({
+  components:{Button}
+})
 export default class Detail extends Vue {
   tags = tagsListModel.data;
 
@@ -60,12 +64,12 @@ export default class Detail extends Vue {
 }
 
 .createTag {
-  background: #767676;
-  color: white;
-  border-radius: 4px;
-  border: none;
-  height: 40px;
-  padding: 0 16px;
+  //background: #767676;
+  //color: white;
+  //border-radius: 4px;
+  //border: none;
+  //height: 40px;
+  //padding: 0 16px;
 
   &-wrapper {
     text-align: center;
