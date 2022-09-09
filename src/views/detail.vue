@@ -44,7 +44,7 @@ export default class Detail extends Vue {
 
 <style lang="scss" scoped>
 .tags {
-  background: #f5f5f5;
+  background: #EBEEF3;
   font-size: 16px;
   padding-left: 16px;
 
