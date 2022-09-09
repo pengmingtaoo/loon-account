@@ -1,3 +1,5 @@
+import createId from '@/lib/idCreator';
+
 type Tag = {
   id: string,
   name: string
@@ -22,11 +24,15 @@ const tagsListModel: TagListModel = {
     window.localStorage.setItem('tagList', JSON.stringify(this.data));
   },
   create(name: string) {
+
     const names = this.data.map(item => item.name);//names是把data里面的每一项name收集起来的集合
     if (names.indexOf(name) >= 0) {
       return 'duplicated';
     }
-    this.data.push({id: name, name: name});
+    //id生成器
+    const id = createId().toString();
+
+    this.data.push({id, name: name});
     this.save();
     return 'success';
   },
