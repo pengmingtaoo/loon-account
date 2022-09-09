@@ -15,7 +15,6 @@ import Tagss from '@/components/money/Tagss.vue';
 import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
-import moment from 'moment';
 import recordListModel from '@/components/models/recordListModel';
 import tagsListModel from '@/components/models/tagsListModel';
 
@@ -38,27 +37,18 @@ export default class Money extends Vue {
     this.record.tags = value;
   }
 
-  // onUpdateTypes(value:string) {
-  //   this.record.type = value;
-  // }
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
 
-  // onUpdateAmount(value:string) {
-  //   this.record.amount = parseFloat(value);
-  // }
 ////深拷贝，每次push之前复制一份
   saveRecord() {
-    const deepClone: RecordItem = recordListModel.clone(this.record);
-    deepClone.createdDate = moment(new Date()).format('YYYY年MM月DD日 HH:mm:ss');
-    this.recordStorage.push(deepClone);//更新数据
-
+    recordListModel.create(this.record)
   }
 
   @Watch('recordStorage')
   onRecordStorageChange() {
-    recordListModel.save(this.recordStorage);//往数据里添加东西
+    recordListModel.save();//往数据里添加东西
   }
 }
 </script>
