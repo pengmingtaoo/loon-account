@@ -8,12 +8,19 @@ import Layout from '@/components/Layout.vue';
 import Icon from '@/components/Icon.vue';
 import TagsListModel from '@/components/models/tagsListModel';
 import tagsListModel from '@/components/models/tagsListModel';
+import recordListModel from '@/components/models/recordListModel';
 
 Vue.config.productionTip = false;
 Vue.component('Nav', Nav);
 Vue.component('Layout', Layout);
 Vue.component('Icon', Icon);
 
+//record store
+window.recordList = recordListModel.fetch();
+window.createRecord = (record:RecordItem)=>recordListModel.create(record)
+
+
+//tag store 的仓库
 window.tagList = TagsListModel.fetch();
 window.createTag = (name: string) => {
   if (name) {

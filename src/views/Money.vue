@@ -14,11 +14,7 @@ import FormItem from '@/components/money/FormItem.vue';
 import Tagss from '@/components/money/Tagss.vue';
 import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
-import {Component, Watch} from 'vue-property-decorator';
-import recordListModel from '@/components/models/recordListModel';
-
-const recordStorage = recordListModel.fetch();
-
+import {Component} from 'vue-property-decorator';
 
 @Component({
   components: {
@@ -30,7 +26,7 @@ export default class Money extends Vue {
   //收集的数据记录record
   record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
   //收集之后存入数组
-  recordStorage: RecordItem[] = recordStorage;
+  recordStorage = window.recordList;
 
   onUpdateTags(value: string[]) {
     this.record.tags = value;
@@ -42,12 +38,7 @@ export default class Money extends Vue {
 
 ////深拷贝，每次push之前复制一份
   saveRecord() {
-    recordListModel.create(this.record)
-  }
-
-  @Watch('recordStorage')
-  onRecordStorageChange() {
-    recordListModel.save();//往数据里添加东西
+    window.createRecord(this.record)
   }
 }
 </script>
