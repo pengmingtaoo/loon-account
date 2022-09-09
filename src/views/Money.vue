@@ -16,10 +16,9 @@ import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
 import recordListModel from '@/components/models/recordListModel';
-import tagsListModel from '@/components/models/tagsListModel';
 
 const recordStorage = recordListModel.fetch();
-const tagsList = tagsListModel.fetch();
+
 
 @Component({
   components: {
@@ -27,7 +26,7 @@ const tagsList = tagsListModel.fetch();
   }
 })
 export default class Money extends Vue {
-  tagss = tagsList;
+  tagss = window.tagList;
   //收集的数据记录record
   record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
   //收集之后存入数组

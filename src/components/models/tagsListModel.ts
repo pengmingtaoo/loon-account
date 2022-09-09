@@ -1,18 +1,5 @@
 import createId from '@/lib/idCreator';
 
-type Tag = {
-  id: string,
-  name: string
-}
-type TagListModel = {
-  data: Tag[],
-  fetch: () => Tag[],
-  create: (name: string) => string, //'success'||'duplicated' //联合类型
-  save: () => void,
-  update: (id: string, name: string) => string,
-  remove: (id: string) => boolean,
-}
-
 const tagsListModel: TagListModel = {
   data: [],
   fetch() {
