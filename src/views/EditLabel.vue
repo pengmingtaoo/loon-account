@@ -19,45 +19,43 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import tagsListModel from '@/components/models/tagsListModel';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
-import {createLogger} from 'vuex';
+
 
 @Component({
   components: {FormItem, Button}
 })
 export default class EditLabel extends Vue {
 
-  // eslint-disable-next-line no-undef
-  tag?:Tag = undefined;
+  //$route获取路由的信息
+  tag = window.findTag(this.$route.params.id);
 
   created() {
-    const id = this.$route.params.id;//$route获取路由的信息
-    tagsListModel.fetch();
-    const tags = tagsListModel.data;
-    const tag = tags.filter(t => t.id === id)[0];
-    if (tag) {
-      this.tag = tag;
-    } else {
+    if (!this.tag) {
       // this.$router.push('/404');
       this.$router.replace('/404');
       //replace可以回退
     }
   }
-  updateTag(name:string){
-    if(this.tag)
-    tagsListModel.update(this.tag.id,name)
+
+  updateTag(name: string) {
+    if (this.tag)
+      window.updateTag(this.tag.id, name);
   }
-  remove(){
-    if(this.tag){
-      if(tagsListModel.remove(this.tag.id)){
+
+  remove() {
+    if (this.tag) {
+      if (window.removeTag(this.tag.id)) {
         this.$router.back();
-        window.alert('删除成功！')
+        window.alert('删除成功！');
+      } else {
+        window.alert('删除失败！');
       }
     }
   }
-  goBack(){
+
+  goBack() {
     this.$router.back();
   }
 
@@ -74,7 +72,8 @@ export default class EditLabel extends Vue {
   align-content: center;
   justify-content: space-between;
 
-  > .title {}
+  > .title {
+  }
 
   > .leftIcon {
     width: 24px;
@@ -86,11 +85,13 @@ export default class EditLabel extends Vue {
     height: 24px;
   }
 }
-.form-wrapper{
+
+.form-wrapper {
   background: #EBEEF3;
   margin-top: 8px;
 }
-.button-Wrapper{
+
+.button-Wrapper {
   text-align: center;
   padding: 16px;
   margin-top: 44-16px;

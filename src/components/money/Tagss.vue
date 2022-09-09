@@ -5,7 +5,8 @@
     </div>
     <ul class="current">
       <li v-for="tag in dataSoure" :key="tag.id">
-        <div class="dtags" @click="toggle(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
+        <div class="dtags" @click="toggle(tag)"
+             :class="{selected:selectedTags.indexOf(tag)>=0}">
           {{ tag.name }}
         </div>
       </li>
