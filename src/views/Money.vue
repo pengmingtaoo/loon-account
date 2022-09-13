@@ -15,6 +15,7 @@ import Tagss from '@/components/money/Tagss.vue';
 import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
+import store from '@/store/index2';
 
 @Component({
   components: {
@@ -22,11 +23,11 @@ import {Component} from 'vue-property-decorator';
   }
 })
 export default class Money extends Vue {
-  tagss = window.tagList;
+  tagss = store.tagList;
   //收集的数据记录record
   record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
   //收集之后存入数组
-  recordStorage = window.recordList;
+  recordStorage = store.recordList;
 
   onUpdateTags(value: string[]) {
     this.record.tags = value;
@@ -38,7 +39,7 @@ export default class Money extends Vue {
 
 ////深拷贝，每次push之前复制一份
   saveRecord() {
-    window.createRecord(this.record)
+    store.createRecord(this.record)
   }
 }
 </script>
