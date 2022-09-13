@@ -15,18 +15,24 @@ import Tagss from '@/components/money/Tagss.vue';
 import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import store from '@/store/index2';
 
 @Component({
   components: {
     NumberPad, FormItem, Tagss, Types
-  }
+  },
+  computed :{
+    recordList(){
+      return this.$store.state.recordList;
+    }
+  },
 })
 export default class Money extends Vue {
   //收集的数据记录record
   record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
-  //收集之后存入数组
-  recordStorage = store.recordList;
+
+  created(){
+    this.$store.commit('fetchRecords')
+  }
 
   onUpdateNotes(value: string) {
     this.record.notes = value;
@@ -34,7 +40,7 @@ export default class Money extends Vue {
 
 ////深拷贝，每次push之前复制一份
   saveRecord() {
-    store.createRecord(this.record)
+    this.$store.commit('createRecord',this.record);
   }
 }
 </script>

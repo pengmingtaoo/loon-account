@@ -21,18 +21,18 @@ import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
-import store from '@/store/index2';
 
 
 @Component({
   components: {FormItem, Button}
 })
 export default class EditLabel extends Vue {
-
-  //$route获取路由的信息
-  tag = store.findTag(this.$route.params.id);
+  // eslint-disable-next-line no-undef
+  tag?: Tag = undefined;
 
   created() {
+    //$route获取路由的信息
+    // this.tag = store.findTag(this.$route.params.id);
     if (!this.tag) {
       // this.$router.push('/404');
       this.$router.replace('/404');
@@ -41,18 +41,19 @@ export default class EditLabel extends Vue {
   }
 
   updateTag(name: string) {
-    if (this.tag)
-      store.updateTag(this.tag.id, name);
+    if (this.tag) {
+      // store.updateTag(this.tag.id, name);
+    }
   }
-
   remove() {
     if (this.tag) {
-      if (store.removeTag(this.tag.id)) {
-        this.$router.back();
-        window.alert('删除成功！');
-      } else {
-        window.alert('删除失败！');
-      }
+      return
+      // if (store.removeTag(this.tag.id)) {
+      //   this.$router.back();
+      //   window.alert('删除成功！');
+      // } else {
+      //   window.alert('删除失败！');
+      // }
     }
   }
 

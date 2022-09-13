@@ -18,14 +18,20 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
-import store from '@/store/index2';
 
-@Component({components: {Button}})
+@Component({
+  components: {Button},
+  computed:{
+    tagList(){
+      //
+      return[];
+    }
+  }
+})
 export default class Tagss extends Vue {
   selectedTags: string[] = [];
-  tagList = store.fetchTags();
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -42,7 +48,7 @@ export default class Tagss extends Vue {
     if (!name) {
       return window.alert('标签名不能为空！');
     }
-      store.createTag(name);
+      // store.createTag(name);
   }
 }
 </script>
