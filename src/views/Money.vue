@@ -3,7 +3,7 @@
     <Number-pad :value.sync="record.amount" @submit="saveRecord"/>
     <FormItem field-name="备注" placeholder="请在这里输入备注"
         @update:value="onUpdateNotes"/>
-    <Tagss :data-soure.sync="tagss" @update:value="onUpdateTags"/>
+    <Tagss/>
     <Types :value.sync="record.type"/>
   </layout>
 </template>
@@ -23,12 +23,10 @@ import store from '@/store/index2';
   }
 })
 export default class Money extends Vue {
-  tagss = store.tagList;
   //收集的数据记录record
   record: RecordItem = {tags: [], notes: '', type: '_', amount: 0};
   //收集之后存入数组
   recordStorage = store.recordList;
-
 
   onUpdateNotes(value: string) {
     this.record.notes = value;

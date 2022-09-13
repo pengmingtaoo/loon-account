@@ -4,7 +4,7 @@
       <Button @click.native="createTag">新增标签</Button>
     </div>
     <ul class="current">
-      <li v-for="tag in dataSoure" :key="tag.id">
+      <li v-for="tag in tagList" :key="tag.id">
         <div class="dtags" @click="toggle(tag)"
              :class="{selected:selectedTags.indexOf(tag)>=0}">
           {{ tag.name }}
@@ -22,11 +22,10 @@ import {Component, Prop} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
 import store from '@/store/index2';
 
-@Component({components:{Button}})
+@Component({components: {Button}})
 export default class Tagss extends Vue {
-  @Prop() readonly dataSoure: string[] | undefined;
   selectedTags: string[] = [];
-  tags = store.fetchTags();
+  tagList = store.fetchTags();
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -35,22 +34,15 @@ export default class Tagss extends Vue {
     } else {
       this.selectedTags.push(tag);
     }
-    this.$emit('update:value',this.selectedTags)
+    this.$emit('update:value', this.selectedTags);
   }
 
   createTag() {
     const name = window.prompt('请输入标签名！');
-    if (name === '') {
-      window.alert('标签名不能为空！');
+    if (!name) {
+      return window.alert('标签名不能为空！');
     }
-    if(name){
-      const message = store.createTag(name);
-      if(message === 'duplicated'){
-        window.alert('标签名重复');
-      }else if(message === 'success'){
-        window.alert('添加成功！');
-      }
-    }
+      store.createTag(name);
   }
 }
 </script>
