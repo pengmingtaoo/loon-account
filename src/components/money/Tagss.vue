@@ -19,14 +19,14 @@
 
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
-import tagsListModel from '@/components/models/tagsListModel';
 import Button from '@/components/Button.vue';
+import store from '@/store/index2';
 
 @Component({components:{Button}})
 export default class Tagss extends Vue {
   @Prop() readonly dataSoure: string[] | undefined;
   selectedTags: string[] = [];
-  tags = tagsListModel.data;
+  tags = store.fetchTags();
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -42,15 +42,9 @@ export default class Tagss extends Vue {
     const name = window.prompt('请输入标签名！');
     if (name === '') {
       window.alert('标签名不能为空！');
-    } else
-    //   if (this.dataSoure) {
-    //   // this.dataSoure.push(name!);//不能改外部数据
-    //   // tagsListModel.create(name!);
-    //   this.$emit('update:dataSource',[...this.dataSoure,name]);
-    //   console.log(name);
-    // }
+    }
     if(name){
-      const message = tagsListModel.create(name);
+      const message = store.createTag(name);
       if(message === 'duplicated'){
         window.alert('标签名重复');
       }else if(message === 'success'){

@@ -29,9 +29,6 @@ export default class Money extends Vue {
   //收集之后存入数组
   recordStorage = store.recordList;
 
-  onUpdateTags(value: string[]) {
-    this.record.tags = value;
-  }
 
   onUpdateNotes(value: string) {
     this.record.notes = value;

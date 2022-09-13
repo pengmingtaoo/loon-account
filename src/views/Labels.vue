@@ -33,120 +33,120 @@
   </layout>
 </template>
 
-<script lang="ts">
+<!--<script lang="ts">-->
 
-import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
-import tagsListModel from '@/components/models/tagsListModel';
+<!--import Vue from 'vue';-->
+<!--import {Component} from 'vue-property-decorator';-->
+<!--import tagsListModel from '@/components/models/tagsListModel';-->
 
-const tags = tagsListModel.fetch();
+<!--const tags = tagsListModel.fetch();-->
 
-@Component
-export default class Labels extends Vue {
-  tags = tagsListModel.fetch();
-}
-</script>
+<!--@Component-->
+<!--export default class Labels extends Vue {-->
+<!--  tags = tagsListModel.fetch();-->
+<!--}-->
+<!--</script>-->
 
-<style lang="scss" scoped>
-@import "~@/assets/style/helper.scss";
+<!--<style lang="scss" scoped>-->
+<!--@import "~@/assets/style/helper.scss";-->
 
-.labelsLayout {
-  background: #F4F3F8;
+<!--.labelsLayout {-->
+<!--  background: #F4F3F8;-->
 
-  header {
-    background: #EBEEF3;
-    font-size: 18px;
-    padding: 10px;
-    font-weight: 500;
-    font-family: $font-hei;
-    letter-spacing: 1px;
-  }
+<!--  header {-->
+<!--    background: #EBEEF3;-->
+<!--    font-size: 18px;-->
+<!--    padding: 10px;-->
+<!--    font-weight: 500;-->
+<!--    font-family: $font-hei;-->
+<!--    letter-spacing: 1px;-->
+<!--  }-->
 
-  .parcel {
-    margin: 8px 12px;
-    background: #fff;
+<!--  .parcel {-->
+<!--    margin: 8px 12px;-->
+<!--    background: #fff;-->
 
-    li {
-      color: #c5c5c5;
-      font-size: 14px;
-      padding: 5px 8px;
+<!--    li {-->
+<!--      color: #c5c5c5;-->
+<!--      font-size: 14px;-->
+<!--      padding: 5px 8px;-->
 
-      .expend {
-        color: #333333;
-        font-size: 24px;
-        font-weight: 700;
-        padding-left: 10px;
-      }
+<!--      .expend {-->
+<!--        color: #333333;-->
+<!--        font-size: 24px;-->
+<!--        font-weight: 700;-->
+<!--        padding-left: 10px;-->
+<!--      }-->
 
-      .income {
-        font-size: 14px;
-        padding-left: 5px;
-        color: #000;
-      }
-    }
+<!--      .income {-->
+<!--        font-size: 14px;-->
+<!--        padding-left: 5px;-->
+<!--        color: #000;-->
+<!--      }-->
+<!--    }-->
 
-    .chart {
-      display: flex;
-      -webkit-box-pack: center;
-      justify-content: center;
-      color: #228b22;
-      padding: 15px 0;
-      font-size: 13px;
+<!--    .chart {-->
+<!--      display: flex;-->
+<!--      -webkit-box-pack: center;-->
+<!--      justify-content: center;-->
+<!--      color: #228b22;-->
+<!--      padding: 15px 0;-->
+<!--      font-size: 13px;-->
 
-      .icon {
-        margin: 2px 5px;
-      }
-    }
-  }
+<!--      .icon {-->
+<!--        margin: 2px 5px;-->
+<!--      }-->
+<!--    }-->
+<!--  }-->
 
-  .todayExpend {
-    margin: 20px 12px;
-    color: #000;
-    font-weight: 700;
+<!--  .todayExpend {-->
+<!--    margin: 20px 12px;-->
+<!--    color: #000;-->
+<!--    font-weight: 700;-->
 
-    span {
-      padding-right: 15px;
+<!--    span {-->
+<!--      padding-right: 15px;-->
 
-    }
-  }
+<!--    }-->
+<!--  }-->
 
-  footer {
-    margin: 16px;
+<!--  footer {-->
+<!--    margin: 16px;-->
 
-    li {
-      padding: 12px;
-      margin-bottom: 5px;
-      background: #fff;
+<!--    li {-->
+<!--      padding: 12px;-->
+<!--      margin-bottom: 5px;-->
+<!--      background: #fff;-->
 
-      .item {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+<!--      .item {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        justify-content: space-between;-->
 
-        .tag {
-          display: flex;
-          align-items: center;
-          letter-spacing: 1px;
+<!--        .tag {-->
+<!--          display: flex;-->
+<!--          align-items: center;-->
+<!--          letter-spacing: 1px;-->
 
-          .icon {
-            background: #F0625A;
-            width: 30px;
-            height: 30px;
-            padding: 4px;
-            border-radius: 50%;
-            color: white;
-            margin-right: 5px;
+<!--          .icon {-->
+<!--            background: #F0625A;-->
+<!--            width: 30px;-->
+<!--            height: 30px;-->
+<!--            padding: 4px;-->
+<!--            border-radius: 50%;-->
+<!--            color: white;-->
+<!--            margin-right: 5px;-->
 
-          }
-        }
+<!--          }-->
+<!--        }-->
 
-        span {
-          font-weight: 700;
-        }
-      }
-    }
-  }
+<!--        span {-->
+<!--          font-weight: 700;-->
+<!--        }-->
+<!--      }-->
+<!--    }-->
+<!--  }-->
 
-}
+<!--}-->
 
-</style>
+<!--</style>-->
