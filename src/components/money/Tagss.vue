@@ -26,12 +26,16 @@ import Button from '@/components/Button.vue';
   computed:{
     tagList(){
       //
-      return[];
+      return this.$store.state.tagList;
     }
   }
 })
 export default class Tagss extends Vue {
   selectedTags: string[] = [];
+
+  created(){
+    this.$store.commit('fetchTags');
+  }
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -48,7 +52,7 @@ export default class Tagss extends Vue {
     if (!name) {
       return window.alert('标签名不能为空！');
     }
-      // store.createTag(name);
+    this.$store.commit('createTag',name);
   }
 }
 </script>
