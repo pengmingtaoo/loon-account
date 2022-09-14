@@ -2,13 +2,13 @@
   <layout>
     <div class="tags">
       <router-link v-for="tag in tags" :key="tag.id" :to="`/detail/edit/${tag.id}`" class="tag">
-        <span>{{tag.name}}</span>
+        <span>{{ tag.name }}</span>
         <Icon name="right"/>
       </router-link>
     </div>
     <div class="createTag-wrapper">
       <Button class="createTag" @click.native="createTag">新建标签</Button>
-<!--      natie 原生的natie事件，监听button的点击事件-->
+      <!--      natie 原生的natie事件，监听button的点击事件-->
     </div>
   </layout>
 </template>
@@ -20,25 +20,23 @@ import Button from '@/components/Button.vue';
 
 
 @Component({
-  components:{Button},
-  computed:{
-    tags(){
-     return  this.$store.state.tagList;
-    }
-  },
+  components: {Button},
 })
 export default class Detail extends Vue {
+  get tags() {
+    return this.$store.state.tagList;
+  }
 
-  beforeCreate(){
+  beforeCreate() {
     this.$store.commit('fetchTags');
   }
 
-  createTag(){
-    const name  = window.prompt('请输入标签名！');
+  createTag() {
+    const name = window.prompt('请输入标签名！');
     if (!name) {
       return window.alert('标签名不能为空！');
     }
-    this.$store.commit('createTag',name);
+    this.$store.commit('createTag', name);
   }
 
 }

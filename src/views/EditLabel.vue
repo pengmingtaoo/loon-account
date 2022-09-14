@@ -27,12 +27,13 @@ import Button from '@/components/Button.vue';
   components: {FormItem, Button}
 })
 export default class EditLabel extends Vue {
-  // eslint-disable-next-line no-undef
-  tag?: Tag = undefined;
-
+  get tag(){
+    return this.$store.state.currentTag;
+  }
   created() {
     //$route获取路由的信息
-    // this.tag = store.findTag(this.$route.params.id);
+    const id = this.$route.params.id;
+    this.$store.commit('setCurrentTag',id);
     if (!this.tag) {
       // this.$router.push('/404');
       this.$router.replace('/404');
