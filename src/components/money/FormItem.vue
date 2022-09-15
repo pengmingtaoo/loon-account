@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <label class="formItem">
-      <span class="name">{{ this.fieldName }}</span>
-      <input type="text"
-             :value="value"
-             @input="onValueChanged($event.target.value)"
-             :placeholder="placeholder"/>
-    </label>
+
+  <div class="formItem">
+    <span class="name">{{ this.fieldName }}</span>
+    <input type="text"
+           :value="value"
+           @input="onValueChanged($event.target.value)"
+           :placeholder="placeholder"/>
   </div>
+
 </template>
 
 <script lang="ts">
@@ -22,9 +22,7 @@ export default class FormItem extends Vue {
   @Prop() placeholder?: string;
 
   onValueChanged(value: string) {
-    console.log('value+'+value);
     this.$emit('update:value', value);
-
   }
 }
 </script>

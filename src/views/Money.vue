@@ -34,7 +34,6 @@ export default class Money extends Vue {
   }
 
   onUpdateNotes(value: string) {
-    console.log(value);
     this.record.notes = value;
   }
 

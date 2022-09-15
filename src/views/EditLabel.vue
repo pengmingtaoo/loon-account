@@ -33,6 +33,7 @@ export default class EditLabel extends Vue {
   created() {
     //$route获取路由的信息
     const id = this.$route.params.id;
+    this.$store.commit('fetchTags');
     this.$store.commit('setCurrentTag',id);
     if (!this.tag) {
       this.$router.replace('/404');
@@ -40,20 +41,13 @@ export default class EditLabel extends Vue {
   }
 
   updateTag(name: string) {
-    console.log('name+'+name);
     if (this.tag) {
       this.$store.commit('updateTag',{id:this.tag.id, name});
     }
   }
   remove() {
     if (this.tag) {
-      return
-      // if (store.removeTag(this.tag.id)) {
-      //   this.$router.back();
-      //   window.alert('删除成功！');
-      // } else {
-      //   window.alert('删除失败！');
-      // }
+      this.$store.commit('removeTag',this.tag.id)
     }
   }
 

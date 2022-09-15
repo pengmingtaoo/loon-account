@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import clone from '@/lib/clone';
 import moment from 'moment';
 import createId from '@/lib/idCreator';
+import router from '@/router';
 
 Vue.use(Vuex);
 
@@ -48,12 +49,28 @@ const store = new Vuex.Store({
       if (idList.indexOf(id) >= 0) {
         const nameList = state.tagList.map(item => item.name);
         if (nameList.indexOf(name) >= 0) {
-          window.alert('标签名重复！');
+          return 'duplicated';
         } else {
           const tag = state.tagList.filter(item => item.id === id)[0];
           tag.name = name;
           store.commit('saveTags');
         }
+      }
+    },
+    removeTag (state,id: string) {
+      let index = -1;
+      for (let i = 0; i < state.tagList.length; i++) {
+        if (state.tagList[i].id === id) {
+          index = i;
+          break;
+        }
+      }
+      if(index>=0){
+        state.tagList.splice(index, 1);
+        store.commit('saveTags');
+        router.back();
+      }else{
+        window.alert('删除失败');
       }
     },
 
