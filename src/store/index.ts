@@ -49,6 +49,7 @@ const store = new Vuex.Store({
       if (idList.indexOf(id) >= 0) {
         const nameList = state.tagList.map(item => item.name);
         if (nameList.indexOf(name) >= 0) {
+          window.alert('标签名重复');
           return 'duplicated';
         } else {
           const tag = state.tagList.filter(item => item.id === id)[0];
