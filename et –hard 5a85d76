@@ -1,0 +1,19 @@
+[33m5a85d76[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{0}: commit: Tags更改回布局 component :is="newTag"动态绑定li @click="select()"
+[33m0ed2309[m HEAD@{1}: commit: li无法选中取消变色
+[33macd52e3[m HEAD@{2}: commit: 布局有所更改，因为实现不了分组件传递数据，放弃
+[33m00a4253[m HEAD@{3}: commit: numberPad页面 v-model 代替@input和:value
+[33mf2b7420[m HEAD@{4}: commit: numberPad页面 备注功能完成
+[33mdb79208[m HEAD@{5}: commit: money页面 更换布局 创建3个子组件 并实现支出与收入 功能
+[33m94604a8[m HEAD@{6}: commit: money页面 的html和css样式初步完成
+[33m4087e07[m HEAD@{7}: commit: 添加全局变量和全局样式 helper页面
+[33m29c355e[m HEAD@{8}: commit: 解决了svg自带颜色
+[33m9b701cf[m HEAD@{9}: commit: active-class 路由激活
+[33mc3d7964[m HEAD@{10}: commit: 添加 Nav 样式
+[33m348d743[m HEAD@{11}: commit: 引入svg 并封装icon公共组件
+[33mce30f9b[m HEAD@{12}: commit: Layout 封装样式 使用卡槽slot 传递数据
+[33m7f00b35[m HEAD@{13}: commit: Money 页面布局
+[33m08f3b86[m HEAD@{14}: commit: 添加NotFound页面
+[33m80fa94d[m HEAD@{15}: commit: 全局组件<Nav/>
+[33m5c9b069[m HEAD@{16}: commit: 导航栏初步形成
+[33m348fea7[m HEAD@{17}: reset: moving to HEAD
+[33m348fea7[m HEAD@{18}: commit (initial): init
