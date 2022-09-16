@@ -38,11 +38,10 @@ export default class Tabs extends Vue {
   background: #EBEEF3;
   font-size: 20px;
   display: flex;
-  justify-content: center;align-items: center;
+  justify-content: center;
 
   > li {
     height: 48px;
-    width: 33.33%;
     display: flex;
     justify-content: center;
     align-items: center;
