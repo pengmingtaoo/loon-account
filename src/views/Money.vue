@@ -13,7 +13,6 @@
 import NumberPad from '@/components/money/NumberPad.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tagss from '@/components/money/Tagss.vue';
-import Types from '@/components/money/Types.vue';
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import recordTypeList from '@/constants/recordTypeList';
@@ -21,8 +20,7 @@ import Tabs from '@/components/Tabs.vue';
 
 @Component({
   components: {
-    Tabs,
-    NumberPad, FormItem, Tagss, Types
+    Tabs,NumberPad, FormItem, Tagss,
   },
 })
 export default class Money extends Vue {
