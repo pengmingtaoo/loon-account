@@ -1,9 +1,11 @@
 <template>
   <ul class="types">
-    <li :class="value==='_' && 'selected' "
+    <li class="item"
+        :class="{selected:value==='_',[classPrefix+'-item']:classPrefix}"
         @click="selectType('_')">支出
     </li>
-    <li :class="value==='+' && 'selected' "
+    <li class="item"
+        :class="{selected:value==='+',[classPrefix+'-item']:classPrefix}"
         @click="selectType('+')">收入</li>
   </ul>
 </template>
@@ -15,19 +17,14 @@ import {Component, Watch,Prop} from 'vue-property-decorator';
 @Component
 export default class types extends  Vue{
   @Prop() readonly value!:string;//!不要关心初始值
+  @Prop(String) classPrefix?:string;
   // type = '_'; //'_' 表示支出 '+' 表示收入
   selectType(type:string){
     if(type!=='_' && type!=='+'){
       throw  new Error('type is undefined')
     }
     this.$emit('update:value',type);
-    // this.type = type;
   }
-
-  // @Watch('type')
-  // onTypeChange(value:string){
-  //   this.$emit('update:value',value);
-  // }
 }
 </script>
 

@@ -8,6 +8,7 @@
     <div class="form-wrapper">
       <FormItem :value="tag.name" field-name="标签名"
                 @update:value="updateTag"
+                @blur="commit"
                 placeholder="请在这里输入标签名"/>
     </div>
     <div class="button-Wrapper">
@@ -41,8 +42,11 @@ export default class EditLabel extends Vue {
   }
 
   updateTag(name: string) {
-    if (this.tag) {
-      this.$store.commit('updateTag',{id:this.tag.id, name});
+    this.tag.name = name;
+  }
+  commit(){
+    if(this.tag){
+      this.$store.commit('updateTag',this.tag);
     }
   }
   remove() {
