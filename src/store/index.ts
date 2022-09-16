@@ -7,12 +7,6 @@ import router from '@/router';
 
 Vue.use(Vuex);
 
-type RootState = {
-  recordList: RecordItem[],
-  tagList: Tag[],
-  currentTag?: Tag,
-}
-
 const store = new Vuex.Store({
   state: {
     recordList: [],
