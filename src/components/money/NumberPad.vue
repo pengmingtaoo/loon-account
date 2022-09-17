@@ -28,7 +28,7 @@ import {Component,Prop} from 'vue-property-decorator';
 
 @Component
 export default class numberPad extends Vue {
-  @Prop() readonly value!:number;
+  @Prop(Number) readonly value!:number;
   money = '￥';
   output = this.value.toString();
 
@@ -61,8 +61,9 @@ export default class numberPad extends Vue {
   }
 
   ok() {
-   this.$emit('update:value',this.output);
-    this.$emit('submit',this.output);
+    const number = parseFloat(this.output);
+   this.$emit('update:value',number);
+    this.$emit('submit',number);
     this.output = '0';
   }
 

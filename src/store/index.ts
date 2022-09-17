@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import clone from '@/lib/clone';
-import moment from 'moment';
+
 import createId from '@/lib/idCreator';
 import router from '@/router';
 
@@ -80,7 +80,7 @@ const store = new Vuex.Store({
 
     createRecord(state, record: RecordItem) {
       const deepClone: RecordItem = clone(record);
-      deepClone.createdDate = moment(new Date()).format('YYYY年MM月DD日 HH:mm:ss');
+      deepClone.createdDate = new Date();
       state.recordList.push(deepClone);//更新数据
       store.commit('saveRecords');
     }

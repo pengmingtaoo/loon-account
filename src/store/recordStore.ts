@@ -1,5 +1,5 @@
 import clone from '@/lib/clone';
-import moment from 'moment';
+
 
 const localStorageKeyName = 'recordList';
 
@@ -16,7 +16,7 @@ const recordStore = {
 
   createRecord (record: RecordItem) {
     const deepClone: RecordItem = clone(record);
-    deepClone.createdDate = moment(new Date()).format('YYYY年MM月DD日 HH:mm:ss');
+    deepClone.createdDate = new Date();
     this.recordList?.push(deepClone);//更新数据
     recordStore.saveRecords();
   }
