@@ -1,6 +1,6 @@
 <template>
   <div class="account_book">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 @import "~@/assets/style/helper.scss";
 @import "~@/assets/style/reset.scss";
 
-body{
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
@@ -16,13 +16,13 @@ body{
   font-size: 16px;
   line-height: 1.5;
   background: white;
-}
-@media (min-width: 500px) {
-  #app{
+
+  .account_book{
     max-width: 500px;
     margin: 0 auto;
   }
 }
+
 
 
 </style>
