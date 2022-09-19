@@ -4,6 +4,8 @@ import clone from '@/lib/clone';
 
 import createId from '@/lib/idCreator';
 import router from '@/router';
+import {types} from 'sass';
+import Error = types.Error;
 
 Vue.use(Vuex);
 
@@ -11,6 +13,7 @@ const store = new Vuex.Store({
   state: {
     recordList: [],
     createRecordError:null,
+    createTagError:null,
     tagList: [],
     currentTag: undefined,
   } as RootState,
@@ -25,16 +28,18 @@ const store = new Vuex.Store({
         store.commit('createTag', '行');
       }
     },
-    createTag(state, name: string) {
+    createTag: function (state, name: string) {
       const names = state.tagList.map(item => item.name);//names是把data里面的每一项name收集起来的集合
       if (names.indexOf(name) >= 0) {
-        return window.alert('标签名重复');
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        state.createTagError = new Error('tag name duplicated');
+        return;
       }
       //id生成器
       const id = createId().toString();
       state.tagList.push({id, name: name});
       store.commit('saveTags');
-      window.alert('添加成功！');
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
