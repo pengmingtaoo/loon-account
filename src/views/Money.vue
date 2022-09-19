@@ -47,9 +47,9 @@ export default class Money extends Vue {
     }
     this.$store.commit('createRecord',this.record);
     this.record.notes= '';
-    // if(this.$store.state.createRecordError===null){
-    //   window.alert('已保存');
-    // }
+    if(this.$store.state.createRecordError===null){
+      window.alert('已保存');
+    }
   }
 }
 </script>
