@@ -83,6 +83,7 @@ const store = new Vuex.Store({
       deepClone.createdDate = new Date();
       state.recordList.push(deepClone);//更新数据
       store.commit('saveRecords');
+      window.alert('以保存');
     }
   },
 });
