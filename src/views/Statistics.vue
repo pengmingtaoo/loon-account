@@ -1,12 +1,12 @@
 <template>
   <layout class="statistics">
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
-    <ol>
+    <ol v-if="groupedList.length>0">
       <li v-for="(group,index) in groupedList" :key="index">
         <h3 class="title">{{ beautify(group.title) }} <span>￥{{group.total}}</span></h3>
         <ol>
           <li v-for="item in group.items" :key="item.id" class="record">
-            <span>{{ item.tags }}</span>
+            <span class="tags">{{ tagString(item.tags) }}</span>
             <span class="notes">{{ item.notes }}</span>
             <div class="right">
               <span class="amount">￥{{ item.amount }} </span>
@@ -15,7 +15,9 @@
         </ol>
       </li>
     </ol>
-
+    <div v-else class="noResult">
+      目前没有相关记录
+    </div>
   </layout>
 </template>
 
@@ -37,7 +39,7 @@ export default class Statistics extends Vue {
 
   // eslint-disable-next-line no-undef
   tagString(tags: Tag[]) {
-    return tags.length === 0 ? '无' : tags.join(',');
+    return tags.length === 0 ? '无' : tags.map(t=>t.name).join('，');
   }
 
   get recordList() {
@@ -47,9 +49,10 @@ export default class Statistics extends Vue {
 
   get groupedList() {
     const {recordList} = this;
-    if(recordList.length===0){return [];}
 
     const newList = clone(recordList).filter(r=>r.type===this.type).sort((a,b) => dayjs(b.createdDate).valueOf() - dayjs(a.createdDate).valueOf());
+
+    if(newList.length===0){return [];}
 
     type Result = {title:string,total?:number,items:RecordItem[]}[];
 
@@ -69,6 +72,7 @@ export default class Statistics extends Vue {
 
     return result;
   }
+
   created() {
     this.$store.commit('fetchRecords');
   }
@@ -95,7 +99,10 @@ export default class Statistics extends Vue {
 .statistics {
   background: #F4F3F8;
 }
-
+.noResult{
+  padding: 16px;
+  text-align: center;
+}
 .statistics ::v-deep .type-tabs-item {
   width: 50%;
   margin: 0;
@@ -139,17 +146,21 @@ export default class Statistics extends Vue {
   @extend %item;
   background: white;
 }
+.tags{
+  margin-right: 16px;
+}
 
 .notes {
-  margin-right: 16px;
-  margin-left: 16px;
+  margin-right: auto;
   color: #999999;
   overflow-y: hidden;
+
 }
 
 .right {
   display: flex;
   flex-direction: column;
+  margin-left: 16px;
 
   .amount {
     display: flex;

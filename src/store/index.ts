@@ -10,19 +10,25 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     recordList: [],
+    createRecordError:null,
     tagList: [],
     currentTag: undefined,
   } as RootState,
 
   mutations: {
     fetchTags(state) {
-      const tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
-      state.tagList = tagList;
+      state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
+      if (!state.tagList || state.tagList.length === 0) {
+        store.commit('createTag', '衣');
+        store.commit('createTag', '食');
+        store.commit('createTag', '住');
+        store.commit('createTag', '行');
+      }
     },
     createTag(state, name: string) {
       const names = state.tagList.map(item => item.name);//names是把data里面的每一项name收集起来的集合
       if (names.indexOf(name) >= 0) {
-       return  window.alert('标签名重复');
+        return window.alert('标签名重复');
       }
       //id生成器
       const id = createId().toString();
@@ -79,11 +85,11 @@ const store = new Vuex.Store({
     },
 
     createRecord(state, record: RecordItem) {
-      const deepClone: RecordItem = clone(record);
+      const deepClone = clone(record);
       deepClone.createdDate = new Date();
       state.recordList.push(deepClone);//更新数据
       store.commit('saveRecords');
-      window.alert('以保存');
+      window.alert('已保存');
     }
   },
 });
