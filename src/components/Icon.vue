@@ -8,7 +8,7 @@
 
 //接收一个requireContext对象，循环调用它的key,进行requireContext
 //typescript必须要我们声明requireContext的类型
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 import Vue from 'vue';
 
 let importAll = (requireContext:__WebpackModuleApi.RequireContext) => {return requireContext.keys().forEach(requireContext)};
@@ -21,10 +21,10 @@ try{
   console.log(error);
 }
 
-export default{
-  name: 'Icon',
-  props: ['name'],
-};
+@Component
+export default class Icon extends Vue {
+  @Prop({required: true, type: String}) name!: string;
+}
 </script>
 
 <style lang="scss" scoped>

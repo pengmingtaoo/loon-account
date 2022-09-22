@@ -1,9 +1,10 @@
 type Tag = {
-  id: string,
-  name: string
+  name: string,
+  value:string,
 }
 type RecordItem = {
-  tags: Tag[];
+  id?: number,
+  tags: Tag;
   notes: string;
   type: string;
   amount: number;//数据类型

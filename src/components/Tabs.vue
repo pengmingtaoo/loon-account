@@ -1,8 +1,8 @@
 <template>
   <ul class="tabs">
-    <li v-for="item in dataSource" :key="item.value"
-        :class="liClass(item)" @click="select(item)">
-      {{ item.text }}
+    <li v-for="(item,index) in dataSource" :key="index"
+        :class="liClass(item)" @click="select(item.value)">
+      {{ item.name }}
     </li>
   </ul>
 </template>
@@ -11,7 +11,7 @@
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 
-type DataSourceItem = { text: string, value: string }
+type DataSourceItem = { name: string, value: string }
 
 @Component
 export default class Tabs extends Vue {
@@ -27,8 +27,8 @@ export default class Tabs extends Vue {
     }
   }
 
-  select(item: DataSourceItem) {
-    this.$emit('update:value', item.value);
+  select(item: string) {
+    this.$emit('update:value', item);
   }
 }
 </script>

@@ -7,6 +7,7 @@ import Statistics from '@/views/Statistics.vue';
 import NotFound from '@/views/NotFound.vue';
 import detail from '@/views/detail.vue'
 import EditLabel from '@/views/EditLabel.vue';
+import Tags from '@/components/money/Tags.vue';
 
 
 Vue.use(VueRouter);
@@ -43,6 +44,11 @@ const routes: Array<RouteConfig> = [
         path:'*',
         name:'*',
         component:NotFound,
+    },
+    {
+        path:'/tags',
+        name:'tags',
+        component:Tags,
     }
 ];
 
