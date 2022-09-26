@@ -24,7 +24,7 @@
         <li>
           <label class="form-wrapper">
             <FormItem :value="record.amount" field-name="金额"
-                      @update:value="updateRecord"/>
+                      @update:value="updateAmount"/>
           </label>
         </li>
         <li>
@@ -37,7 +37,7 @@
         <li>
           <label class="form-wrapper">
             <FormItem :value="record.notes" field-name="备注"
-                      @update:value="updateRecord"/>
+                      @update:value="updateNote"/>
           </label>
         </li>
       </ul>
@@ -79,9 +79,13 @@ export default class EditRecord extends Vue {
     }
   }
 
-  updateRecord(amount: number, note: string) {
+  updateAmount(amount: number) {
     if (this.record) {
       this.record.amount = amount;
+    }
+  }
+  updateNote(note:string){
+    if (this.record) {
       this.record.notes = note;
     }
   }
