@@ -71,7 +71,7 @@ const store = new Vuex.Store({
       }
       if (index>=0) {
         state.recordList.splice(index, 1);
-        store.commit('saveRecord');
+        store.commit('saveRecords');
       } else {
         window.alert('删除失败');
       }

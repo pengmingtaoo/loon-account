@@ -10,7 +10,7 @@
         </div>
         <span>{{ record.tags.value }}</span>
       </div>
-      <div class="back"></div>
+      <div class="ok" @click="ok">完成</div>
     </header>
 
     <main>
@@ -18,7 +18,7 @@
         <li>
           <label class="type">
             <span class="name">类型</span>
-            <div >{{ record.type === '_' ? '支出' : '收入' }}</div>
+            <div>{{ record.type === '_' ? '支出' : '收入' }}</div>
           </label>
         </li>
         <li>
@@ -41,6 +41,9 @@
           </label>
         </li>
       </ul>
+      <div class="button-Wrapper">
+        <Button @click="remove">删除标签</Button>
+      </div>
     </main>
   </div>
 </template>
@@ -54,7 +57,7 @@ import FormItem from '@/components/money/FormItem.vue';
 import DatePicker from '@/components/DatePicker.vue';
 
 @Component({
-  components:{FormItem,DatePicker}
+  components: {FormItem, DatePicker}
 })
 export default class EditRecord extends Vue {
   record?: RecordItem;    //函数定义的方式，不是对象的定义；
@@ -76,7 +79,7 @@ export default class EditRecord extends Vue {
     }
   }
 
-  updateRecord(amount: number,note:string) {
+  updateRecord(amount: number, note: string) {
     if (this.record) {
       this.record.amount = amount;
       this.record.notes = note;
@@ -110,16 +113,16 @@ export default class EditRecord extends Vue {
       this.record.amount = parseFloat(this.record.amount.toString());
       this.$store.commit('updateRecord', {id: this.record.id, record: this.record});
     }
-    this.$router.replace('/');
+    this.$router.replace('/labels');
   }
 
   remove() {
     if (this.record) {
-      this.$store.commit('removeReocrd', this.record.id);
+      this.$store.commit('removeRecord', this.record.id);
       if (this.$store.state.recordListErroe === 'notfound') {
         window.alert('该记录不存在');
       } else {
-        this.$router.replace('/');
+        this.$router.replace('/labels');
       }
     }
   }
@@ -182,15 +185,29 @@ export default class EditRecord extends Vue {
   }
 }
 
+.button-Wrapper {
+  text-align: center;
+  padding: 16px;
+  margin-top: 44-16px;
+
+  Button{
+    background: #F0625A;
+    border: 0;
+    padding: 5px;
+    border-radius: 9%;
+  }
+}
+
 .main {
   font-size: 16px;
 
   > li {
     border-bottom: 1px solid #dddddd;
 
-    .form-wrapper{
+    .form-wrapper {
       color: #999999;
     }
+
     > label {
       display: flex;
       align-items: center;
@@ -208,7 +225,8 @@ export default class EditRecord extends Vue {
         font-size: inherit;
       }
     }
-    .date,.type{
+
+    .date, .type {
       margin: 16px 0;
     }
   }
