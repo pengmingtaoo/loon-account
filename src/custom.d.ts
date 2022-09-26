@@ -15,7 +15,7 @@ type RootState = {
   createRecordError:Error | null,
   createTagError:Error | null,
   tagList: Tag[],
-  currentTag?: Tag,
+  currentRecord?: RecordItem|undefined,
 }
 
 //自定义全局声明

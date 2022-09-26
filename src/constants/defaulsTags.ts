@@ -41,7 +41,7 @@ const shopTags = [
 ]as Tag[];
 
 const transportTags = [
-  {name: 'transportation', value: '交通'},
+  {name: 'transport', value: '交通'},
   {name: 'bus', value: '公交'},
   {name: 'subway', value: '地铁'},
   {name: 'train', value: '火车'},

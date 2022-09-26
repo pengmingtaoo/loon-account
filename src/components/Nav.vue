@@ -5,7 +5,7 @@
       记账
     </router-link>
 
-    <router-link :to="{name:'detail'}" class="item" active-class="selected">
+    <router-link :to="{name:'labels'}" class="item" active-class="selected">
       <Icon name="bill"/>
       流水
     </router-link>

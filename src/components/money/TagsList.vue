@@ -1,7 +1,7 @@
 <template>
-  <ul class="tags" :class="{[classPrefix+'-tags']:classPrefix}">
+  <ul class="tags" :class="`${classPrefix}-tags`" >
     <li v-for="(tag,index) in tagList" :key="index" @click="select(tag)" class="tags-item" >
-      <div class="tags-item-icon" :class="{'selected': tag.name === selectedTag.name, [classPrefix+'-tags-item-icon']: classPrefix}">
+      <div class="tags-item-icon" :class="{selected: tag.name === selectedTag.name && `${classPrefix}-tags-item-icon`}">
         <Icon :name='tag.name' />
       </div>
       <span>{{tag.value}}</span>

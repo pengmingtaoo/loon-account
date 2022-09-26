@@ -8,6 +8,7 @@ import NotFound from '@/views/NotFound.vue';
 import detail from '@/views/detail.vue'
 import EditLabel from '@/views/EditLabel.vue';
 import Tags from '@/components/money/Tags.vue';
+import EditRecord from '@/components/label/EditRecord.vue';
 
 
 Vue.use(VueRouter);
@@ -23,23 +24,16 @@ const routes: Array<RouteConfig> = [
         component:Money,
     },
     {
-        // path:'/labels',
-        // name:'labels',
-        // component: Labels,
-        path:'/detail',
-        name:'detail',
-        component: detail,
+        path:'/labels',
+        name:'labels',
+        component: Labels,
     },
     {
         path:'/statistics',
         name:'statistics',
         component:Statistics,
     },
-    {
-        path:'/detail/edit/:id',
-        name:'editLabel',
-        component:EditLabel,
-    },
+
     {
         path:'*',
         name:'*',
@@ -49,7 +43,12 @@ const routes: Array<RouteConfig> = [
         path:'/tags',
         name:'tags',
         component:Tags,
-    }
+    },
+    {
+        path: '/record/edit/:id',
+        name: 'EditRecord',
+        component: EditRecord
+    },
 ];
 
 const router = new VueRouter({

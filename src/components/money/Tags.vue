@@ -57,6 +57,12 @@
         </div>
         <TagsList class-prefix="main" :tag-list="medicalTags" :selected-tag.sync="tag"/>
       </div>
+      <div class="study">
+        <div class="kind-name">
+          学习
+        </div>
+        <TagsList class-prefix="main" :tag-list="studyTags" :selected-tag.sync="tag"/>
+      </div>
     </div>
   </div>
 </template>
@@ -65,7 +71,16 @@
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import TagsList from '@/components/money/TagsList.vue';
-import { foodTags,shopTags,transportTags,houseTags,amusementTags,medicalTags } from '@/constants/defaulsTags';
+import {
+  foodTags,
+  shopTags,
+  transportTags,
+  houseTags,
+  amusementTags,
+  medicalTags,
+  studyTags,
+} from '@/constants/defaulsTags';
+import clone from '@/lib/clone';
 
 @Component({
   components: {TagsList}
@@ -79,6 +94,7 @@ export default class Label extends Vue {
   houseTags = houseTags;
   amusementTags = amusementTags;
   medicalTags = medicalTags;
+  studyTags = studyTags;
 
 
   back() {
@@ -86,10 +102,13 @@ export default class Label extends Vue {
   }
 
   ok() {
-    // this.$store.commit('insertTag', clone(this.tag));
-    if (this.$store.state.tagListError === 'duplicate') {
-      window.alert('不可添加同名的标签类别');
-    } else {
+    this.$store.commit('insertTag', clone(this.tag));
+    if(this.$store.state.createTagError){
+      if (this.$store.state.createTagError.message === 'duplicated') {
+        window.alert('不可添加同名的标签类别');
+      }
+    }
+    else {
       this.$router.replace('/money');
     }
   }
@@ -97,6 +116,7 @@ export default class Label extends Vue {
 </script>
 
 <style lang="scss" scoped>
+
 @mixin icon($color) {
   background: white;
   border: 1px solid transparent;
@@ -106,17 +126,14 @@ export default class Label extends Vue {
     height: 24px;
   }
   &.selected {
-    //border: 1px solid #b08fee;
     background: #F0625A;
   }
 }
 
 .fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   background: white;
+  max-width: 500px;
+
 }
 
 .header {
@@ -166,12 +183,15 @@ export default class Label extends Vue {
   .label {
     display: flex;
     align-items: center;
+     span{
+       margin-right: 5px;
+     }
 
     .icon {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background:  #F0625A;
+      background: #F0625A;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -183,11 +203,13 @@ export default class Label extends Vue {
 }
 
 .content {
-  padding-top: 120px;
+  padding-top: 10px;
 }
 
 .kind-name {
   font-size: 14px;
+  display: flex;
+  justify-content: center;
   color: #999999;
 }
 </style>
