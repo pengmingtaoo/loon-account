@@ -61,7 +61,7 @@
         </li>
       </ol>
       <div v-else class="reverse">
-        目前没有相关记录
+        <Blank/>
       </div>
     </footer>
   </layout>
@@ -73,13 +73,15 @@ import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
 import clone from '@/lib/clone';
 import dayjs from 'dayjs';
+import Blank from '@/components/Blank.vue';
 
 type Group = {
   name: string;
   items: RecordItem[];
 }
-
-@Component
+@Component({
+  components: {Blank}
+})
 export default class Labels extends Vue {
 
   year = window.localStorage.getItem('year') || dayjs().year().toString();
@@ -380,6 +382,12 @@ footer {
             white-space: nowrap;
             overflow: hidden;
           }
+          .notes {
+            color: #999999;
+            font-size: 12px;
+            margin-left: 5px;
+          }
+
 
         }
 

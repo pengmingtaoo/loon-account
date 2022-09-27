@@ -203,13 +203,14 @@ export default class EditRecord extends Vue {
 }
 
 .main {
-  font-size: 16px;
+  font-size: 14px;
 
   > li {
     border-bottom: 1px solid #dddddd;
 
     .form-wrapper {
       color: #999999;
+
     }
 
     > label {
@@ -232,6 +233,7 @@ export default class EditRecord extends Vue {
 
     .date, .type {
       margin: 16px 0;
+
     }
   }
 }
