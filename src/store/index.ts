@@ -21,14 +21,14 @@ const store = new Vuex.Store({
   mutations: {
     fetchTags(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
-      if (!state.tagList || state.tagList.length === 0) {
-        store.commit('insertTag',  {name:'other',value:'其他'});
-        store.commit('insertTag',  {name: 'shop', value: '购物'});
-        store.commit('insertTag',  {name:'food',value:'饮食'});
-        store.commit('insertTag',  {name: 'house', value: '居住'});
-        store.commit('insertTag',  {name: 'transport', value: '交通'});
-
+        if (!state.tagList || state.tagList.length === 0) {
+          store.commit('insertTag',  {name:'other',value:'其他'});
+          store.commit('insertTag',  {name: 'shop', value: '购物'});
+          store.commit('insertTag',  {name:'food',value:'饮食'});
+          store.commit('insertTag',  {name: 'house', value: '居住'});
+          store.commit('insertTag',  {name: 'transport', value: '交通'});
       }
+
     },
     setCurrentTag(state, id: number) {
       //找到路由ID
@@ -51,8 +51,6 @@ const store = new Vuex.Store({
     removeTag(state, id:number) {
       let index = -1;
       for (let i = 0; i < state.tagList.length; i++) {
-        console.log(state.tagList[i].id);
-        console.log(id);
         if (state.tagList[i].id === id) {
           index = i;
           break;

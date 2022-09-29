@@ -105,12 +105,12 @@ export default class Label extends Vue {
     this.$store.commit('insertTag', this.tag);
     if (this.$store.state.createTagError) {
       if (this.$store.state.createTagError.message === "duplicated") {
-        this.$router.replace('/SettingTag');
+        this.$router.replace('/tag/SettingTag');
         return; 
       }
     }
     else {
-      this.$router.replace('/SettingTag');
+      this.$router.replace('/tag/SettingTag');
     }
   }
 }
