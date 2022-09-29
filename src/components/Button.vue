@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  background: #767676;
+  background: #F0625A;
   color: white;
   border-radius: 4px;
   border: none;

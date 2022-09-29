@@ -8,9 +8,9 @@
     </li>
     <li v-if="dynamic" class="tags-item">
       <div class="tags-item-icon" @click="add">
-        <Icon name="add" />
+        <Icon name="setting" />
       </div>
-      <span>添加</span>
+      <span>设置</span>
     </li>
   </ul>
 </template>
@@ -21,7 +21,7 @@ import {Component, Prop} from 'vue-property-decorator';
 
 
 @Component
-export default class TagList extends Vue {
+export default class TagsList extends Vue {
   @Prop(String) classPrefix?: string;
 
   // eslint-disable-next-line no-undef
@@ -36,7 +36,10 @@ export default class TagList extends Vue {
   }
 
   add(){
-    this.$router.replace('/tags');  //TODO
+    this.$router.replace('/tag/SettingTag/',);  //TODO
+  }
+  created() {
+    this.$store.commit('fetchTags');
   }
 }
 </script>

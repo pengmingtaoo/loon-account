@@ -8,7 +8,7 @@
           </button>
           <span>添加支出类别</span>
         </div>
-        <button class="ok" @click="ok">完成</button>
+        <Button class="ok" @click="ok">完成</Button>
       </header>
       <div class="current">
         <div class="label">
@@ -87,7 +87,7 @@ import clone from '@/lib/clone';
 })
 export default class Label extends Vue {
   // eslint-disable-next-line no-undef
-  tag: Tag = {name: 'food', value: '餐饮'};
+  tag: Tag = { name: 'other', value: '其他' };
   foodTags = foodTags;
   shopTags = shopTags;
   transportTags = transportTags;
@@ -98,18 +98,19 @@ export default class Label extends Vue {
 
 
   back() {
-    this.$router.replace('/money');
+    this.$router.replace('/SettingTag');
   }
 
   ok() {
-    this.$store.commit('insertTag', clone(this.tag));
-    if(this.$store.state.createTagError){
-      if (this.$store.state.createTagError.message === 'duplicated') {
-        window.alert('不可添加同名的标签类别');
+    this.$store.commit('insertTag', this.tag);
+    if (this.$store.state.createTagError) {
+      if (this.$store.state.createTagError.message === "duplicated") {
+        this.$router.replace('/SettingTag');
+        return; 
       }
     }
     else {
-      this.$router.replace('/money');
+      this.$router.replace('/SettingTag');
     }
   }
 }

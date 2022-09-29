@@ -47,7 +47,7 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
 
-////深拷贝，每次push之前复制一份
+
   saveRecord() {
     if(!this.record.tags){
       return window.alert('请选择标签');

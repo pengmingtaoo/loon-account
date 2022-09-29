@@ -1,7 +1,8 @@
 type Tag = {
-  name: string,
-  value:string,
-}
+  id?: number,
+  name: string;
+  value: string;
+};
 type RecordItem = {
   id?: number,
   tags: Tag;
@@ -11,12 +12,13 @@ type RecordItem = {
   createdDate?: Date | string;//类/构造函数
 }
 type RootState = {
-  recordList: RecordItem[],
-  createRecordError:Error | null,
-  createTagError:Error | null,
-  tagList: Tag[],
-  currentRecord?: RecordItem|undefined,
-}
+  recordList: RecordItem[];
+  createRecordError: Error | null;
+  createTagError: Error | null;
+  tagList: Tag[];
+  currentRecord?: RecordItem | undefined;
+  currentTag?: Tag,
+};
 
 //自定义全局声明
 // interface Window {

@@ -3,7 +3,7 @@ const path = require('path');//引入node.js的path模块
 //按照vue cli 文档翻译 ，项目没有的webpack.config.js
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/account-loon/'
+    ? '/loon-account-website/'
     : '/',
   lintOnSave: false,
   chainWebpack: config =>{//是一个函数，接收一个config,返回。。。
